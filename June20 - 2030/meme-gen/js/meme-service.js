@@ -33,16 +33,20 @@ var gImgs = [
 
 
 var gMeme = {
-                selectedImgId: 0,
-                txts: [
-                        { line: 'Text', size: 1, align: 'center', color: 'white', shadow: 'black' }
-                    ] 
-            };
-            
+    selectedImgId: 0,
+    txts: [
+        { line: 'Text', size: 1, align: 'center', color: 'white', shadow: 'black' }
+    ]
+};
+
 function updateTxt(txt) {
     gMeme.txts[0].line = txt;
 }
 
 function updateMemeInfo(imgId) {
     gMeme.selectedImgId = imgId;
+}
+
+function updateTxtColor(color) {
+    gMeme.txts[0].color = color;
 }
