@@ -46,3 +46,7 @@ function updateTxt(txt) {
 function updateMemeInfo(imgId) {
     gMeme.selectedImgId = imgId;
 }
+
+function updateTxtColor(color) {
+    gMeme.txts[0].color = color;
+}

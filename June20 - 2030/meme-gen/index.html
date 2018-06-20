@@ -19,8 +19,10 @@
                 <!-- enlarge text -->
                 <button>+</button> 
                 <button>-</button>
-                <select>
-                    <option>Red</option>
+                <select onchange="readUserTxtColor(this.value)">
+                    <option value="white">White</option>
+                    <option value="red">Red</option>
+                    <option value="blue">Blue</option>
                 </select>
                 <!-- move text -->
                 <button>Align Left</button>

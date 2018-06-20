@@ -45,13 +45,18 @@ function readUserLine(txt) {
     renderMeme();
 }
 
+function readUserTxtColor(color) {
+    updateTxtColor(color);
+    renderMeme();
+}
+
 
 function renderTxtOnCanvas() {
     var elCanvas = document.querySelector('canvas');
     var ctx = elCanvas.getContext('2d');
     ctx.font = '40px "Arial"';
-    ctx.fillStyle = 'black';
-    ctx.fillText(gMeme.txts[0].line, 20, 20);
+    ctx.fillStyle = gMeme.txts[0].color;;
+    ctx.fillText(gMeme.txts[0].line, 50, 50);
 }
 
 
