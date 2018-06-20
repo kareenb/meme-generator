@@ -8,14 +8,14 @@
     <title>Meme Generator</title>
 </head>
 
-<body onresize="renderImgIntoCanvas()">
+<body onresize="renderMeme()">
     <section class="meme-imgs"></section>
 
     <main class="meme-editor">
         <section class="txt-editor">
             <button>Add Line</button>
             <div class="control-box">
-                <input class="user-txt-box" type="text" onkeyup="readUserLine()" />
+                <input class="user-txt-box" type="text" onkeyup="readUserLine(this.value)" />
                 <!-- enlarge text -->
                 <button>+</button> 
                 <button>-</button>

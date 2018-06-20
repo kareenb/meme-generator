@@ -18,7 +18,6 @@ function renderImgs() {
 
 function renderImgOnCanvas(imgId) {
     updateMemeInfo(imgId);
-
     renderImgIntoCanvas(imgId);
 }
 
@@ -28,7 +27,7 @@ function renderImgIntoCanvas(imgId) {
         else return;
     }
     var elCanvas = document.querySelector('canvas');
-    var ctx = elCanvas.getContext("2d");
+    var ctx = elCanvas.getContext('2d');
     ctx.clearRect(0, 0, elCanvas.width, elCanvas.height);
     
     var elSelectedImg = document.querySelector(`.img-${imgId}`);
@@ -40,21 +39,26 @@ function renderImgIntoCanvas(imgId) {
     ctx.drawImage(image, 0, 0, elCanvas.width, elCanvas.height);
 }
 
-<<<<<<< HEAD
-function readUserLine() {
-=======
-function renderTxtOnCanvas() {
->>>>>>> a36cb8b59de15666992261e5b2699aba47954678
-    var elTxtBox = document.querySelector('.user-txt-box');
-    updateTxt(elTxtBox.value);
-    renderTxtOnCanvas();
+
+function readUserLine(txt) {
+    updateTxt(txt);
+    renderMeme();
 }
 
 
 function renderTxtOnCanvas() {
     var elCanvas = document.querySelector('canvas');
-    var ctx = elCanvas.getContext("2d");
-    ctx.font = "40px 'Arial'";
+    var ctx = elCanvas.getContext('2d');
+    ctx.font = '40px "Arial"';
     ctx.fillStyle = 'black';
     ctx.fillText(gMeme.txts[0].line, 20, 20);
+}
+
+
+function renderMeme() {
+    var elCanvas = document.querySelector('canvas');
+    var ctx = elCanvas.getContext('2d');
+    ctx.clearRect(0, 0, elCanvas.width, elCanvas.height);
+    renderImgIntoCanvas();
+    renderTxtOnCanvas();
 }
