@@ -28,14 +28,17 @@ function renderImgOnCanvas(imgId) {
     ctx.drawImage(elSelectedImg, 0, 0, 400, 400);
 }
 
-
-function renderTxtOnCanvas() {
+function readUserLine() {
     var elTxtBox = document.querySelector('.user-txt-box');
     updateTxt(elTxtBox.value);
+    renderTxtOnCanvas();
+}
 
+
+function renderTxtOnCanvas() {
     var elCanvas = document.querySelector('canvas');
     var ctx = elCanvas.getContext("2d");
     ctx.font = "40px 'Arial'";
     ctx.fillStyle = 'black';
-    ctx.fillText(elTxtBox.value, 20, 20);
+    ctx.fillText(gMeme.txts[0].line, 20, 20);
 }
