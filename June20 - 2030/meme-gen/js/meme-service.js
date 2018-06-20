@@ -33,12 +33,12 @@ var gImgs = [
 
 
 var gMeme = {
-                selectedImgId: 5,
+                selectedImgId: 0,
                 txts: [
-                        { line: 'I never eat Falafel', size: 20, align: 'left', color: 'red' }
+                        { line: 'Text', size: 1, align: 'center', color: 'white', shadow: 'black' }
                     ] 
             };
-
+            
 function updateTxt(txt) {
     gMeme.txts[0].line = txt;
 }
