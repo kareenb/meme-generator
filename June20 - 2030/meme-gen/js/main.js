@@ -19,15 +19,26 @@ function renderImgs() {
 function renderImgOnCanvas(imgId) {
     updateMemeInfo(imgId);
 
-    var elCanvas = document.querySelector('canvas');
-    var ctx = elCanvas.getContext("2d");
-    var elSelectedImg = document.querySelector(`.img-${imgId}`);
-    ctx.clearRect(0, 0, elCanvas.width, elCanvas.height);
-    elCanvas.width = 400;
-    elCanvas.height = 400;
-    ctx.drawImage(elSelectedImg, 0, 0, 400, 400);
+    renderImgIntoCanvas(imgId);
 }
 
+function renderImgIntoCanvas(imgId) {
+    if (!imgId) {
+        if (gMeme.selectedImgId) imgId = gMeme.selectedImgId;
+        else return;
+    }
+    var elCanvas = document.querySelector('canvas');
+    var ctx = elCanvas.getContext("2d");
+    ctx.clearRect(0, 0, elCanvas.width, elCanvas.height);
+    
+    var elSelectedImg = document.querySelector(`.img-${imgId}`);
+    var image = new Image(0, 0);
+    image.src = elSelectedImg.src;
+    var ratio = image.naturalHeight / image.naturalWidth;
+    elCanvas.width = window.innerWidth - 25;
+    elCanvas.height = elCanvas.width * ratio;
+    ctx.drawImage(image, 0, 0, elCanvas.width, elCanvas.height);
+}
 
 function renderTxtOnCanvas() {
     var elTxtBox = document.querySelector('.user-txt-box');
