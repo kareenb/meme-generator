@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/main.css" rel="stylesheet" />
+    <title>Meme Generator</title>
+</head>
+
+<body>
+    <section class="meme-imgs"></section>
+
+    <main class="meme-editor">
+        <section class="txt-editor">
+            <button>Add Line</button>
+            <div class="control-box">
+                <input class="user-txt-box" type="text" onkeypress="renderTxtOnCanvas()" />
+                <!-- enlarge text -->
+                <button>+</button> 
+                <button>-</button>
+                <select>
+                    <option>Red</option>
+                </select>
+                <!-- move text -->
+                <button>Align Left</button>
+                <button>Align Center</button>
+                <button>Align Right</button>
+
+                <button>Move Up</button>
+                <button>Move Down</button>
+
+            </div>
+        </section>
+        <section class="meme-canvas">
+            <canvas></canvas>
+        </section>
+    </main>
+
+
+
+    <script src="js/meme-service.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
