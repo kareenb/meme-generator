@@ -63,7 +63,7 @@ header .btn-toggle-menu {
 
 header ul.main-menu {
     width: 220px;
-    height: 100vh;
+    height: calc(100vh - 100%);
     position: absolute;
     top: 100%;
     right: 0;
@@ -147,38 +147,51 @@ header ul.main-menu a:hover {
     }
 }
 
+/* Main */
+
+main {
+    flex: 1 0 auto;
+}
+
 /* Gallery (Meme templates) */
 
-.meme-imgs {
-    max-height: 0;
-    overflow: hidden;
+.gallery {
     column-count: 3;
     column-gap: 5px;
     transition: all 0.5s ease-in-out;
 }
 
 @media (min-width: 570px) {
-    .meme-imgs {
+    .gallery {
         column-count: 4;
     }
 }
 
 @media (min-width: 780px) {
-    .meme-imgs {
+    .gallery {
         column-count: 5;
     }
 }
 
-.meme-imgs img {
+.gallery img {
     width: 100%;
     height: auto;
     cursor: pointer;
 }
 
 .meme-editor {
-    max-height: 0;
-    overflow: hidden;
+    position: absolute;
+    top: 58px;
+    width: 100%;
+    min-height: 100vh;
+    background: #323232;
+    transform: translate(-100%, 0);
     transition: all 0.5s ease-in-out;
+    z-index: 50;
+}
+
+.meme-editor.meme-editor-open {
+    transform: translate(0, 0);
 }
 
 /* Meme Editor */
@@ -194,6 +207,7 @@ canvas {
 /* Footer */
 
 footer {
+    width: 100%;
     margin: 0 auto;
     font-family: 'MavenPro', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #323232;
@@ -201,9 +215,8 @@ footer {
 
 /* Helpers */
 
-
 .conatiner {
-    max-width: 1000px;
+    max-width: 980px;
 }
 
 .clean-list {

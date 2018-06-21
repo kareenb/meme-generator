@@ -9,7 +9,7 @@
     <title>Meme Generator</title>
 </head>
 
-<body onload="initPage()" onresize="renderMeme()">
+<body class="flex column" onload="initPage()" onresize="renderMeme()">
     <div class="menu-opacity" onclick="toggleMenu()"></div>
     <header>
         <nav class="container flex space-between align-items-center">
@@ -32,10 +32,22 @@
             </ul>
         </nav>
     </header>
-    <section class="conatiner meme-imgs"></section>
 
-    <main class="conatiner meme-editor">
-        <button onclick="toggleSections()">Return to gallery</button>
+    <main>
+        <!-- Search memes -->
+        <section class="conatiner search-keywords">
+            <input type="search" class="search-imgs" />
+            <button type="button" onclick="searchImgs()">search</button>
+            <div class="search-results gallery"></div>
+        </section>
+        <!-- Meme templates gallery -->
+        <section class="conatiner meme-imgs gallery"></section>
+
+    </main>
+
+    <!-- Meme Editor -->
+    <section class="meme-editor">
+        <button onclick="toggleMemeEditor()">Return to gallery</button>
         <section class="txt-editor">
             <button>Add Line</button>
             <div class="control-box">
@@ -46,7 +58,7 @@
                     <option value="Sans-Serif">Sans-Serif</option>
                 </select>
                 <!-- enlarge text -->
-                <button onclick="readUserTxtSize('plus')">+</button> 
+                <button onclick="readUserTxtSize('plus')">+</button>
                 <button onclick="readUserTxtSize('minus')">-</button>
                 <select onchange="readUserTxtColor(this.value)">
                     <option value="black">Black</option>
@@ -69,14 +81,18 @@
         <section class="meme-canvas">
             <canvas></canvas>
         </section>
-    </main>
+    </section>
 
-    <footer class="conatiner flex">
-kljlkjkl
+    <footer class="flex">
+        <section class="conatiner">
+            &copy; copyrights
+        </section>
     </footer>
 
     <!-- Scripts -->
+    <script src="js/utils.js"></script>
     <script src="js/meme-service.js"></script>
+    <script src="js/keywords-service.js"></script>
     <script src="js/main.js"></script>
 </body>
 

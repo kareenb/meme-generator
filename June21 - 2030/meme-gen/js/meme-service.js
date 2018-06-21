@@ -10,20 +10,37 @@ var gImgs = [
 function createImgs() {
     var imgInfo = {};
     while (gId < 25) {
-        imgInfo = {id: ++gId, url: `../meme-gen/meme-imgs/${gId}.jpg`};
+        imgInfo = {
+            id: ++gId,
+            url: `../meme-gen/meme-imgs/${gId}.jpg`,
+            keywords: []
+        };
         gImgs.push(imgInfo);
     }
 }
 
 var gMeme = {
     // selectedImgId: 0,
-    txts: [
-        { line: 'Text', shadow: 'black' }
-    ]
+    txts: [{
+        line: 'Text',
+        shadow: 'black'
+    }]
 };
 
-function getImgsForDisplay() {
-    return gImgs;
+function getImgsForDisplay(Ids) {
+    if (!Ids) return gImgs;
+    else {
+        var imgs = [];
+        for (var i = 0; i < Ids.length; i++){
+            for (var j = 0; j < gImgs.length; j++) {
+                if (gImgs[j].id === Ids[i]) {
+                    imgs.push(gImgs[j]);
+                    continue;
+                }
+            }
+        }
+    }
+    return imgs;
 }
 
 function getCurrMeme() {
@@ -59,4 +76,10 @@ function updateTxtFont(fontName) {
 
 function updateTxtAlign(direction) {
     gMeme.txts[0].align = direction;
+}
+
+function getImgById(imgId) {
+    for (var i = 0; i < gImgs.length; i++) {
+        if (gImgs[i].id === imgId) return gImgs[i];
+    }
 }

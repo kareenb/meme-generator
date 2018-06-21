@@ -6,6 +6,7 @@ var gCtx = gElCanvas.getContext('2d');
 function initPage() {
     createImgs();
     renderImgGallery();
+    initKeywords();
 }
 
 function renderImgGallery() {
@@ -13,7 +14,7 @@ function renderImgGallery() {
     var elGallery = document.querySelector('.meme-imgs');
     var imgs = getImgsForDisplay();
     imgs.forEach(function (img) {
-        strHTML += `<img class="img img-${img.id}" src="${img.url}" onclick="readUserSelectedImg(${img.id}); toggleSections()" />`;
+        strHTML += `<img class="img img-${img.id}" src="${img.url}" onclick="readUserSelectedImg(${img.id}); toggleMemeEditor()" />`;
     });
 
     elGallery.innerHTML = strHTML;
@@ -117,16 +118,12 @@ function renderMeme() {
 
 function toggleSections() {
     toggleMemeEditor();
-    toggleGallery();
+    // toggleGallery();
 }
 
 function toggleMemeEditor() {
     var elMemeEditor = document.querySelector('.meme-editor');
-    if (elMemeEditor.style.maxHeight) {
-        elMemeEditor.style.maxHeight = null;
-    } else {
-        elMemeEditor.style.maxHeight = elMemeEditor.scrollHeight + 'px';
-    }
+    elMemeEditor.classList.toggle('meme-editor-open');
 }
 
 function toggleGallery() {
@@ -147,4 +144,20 @@ function toggleMenu(elBtn) {
 
     var elOpacity = document.querySelector('.menu-opacity');
     elOpacity.classList.toggle('opacity-open');
+}
+
+function renderSearchResults(imgs) {
+    var strHTML = '';
+    var elResults = document.querySelector('.search-results');
+    imgs.forEach(function (img) {
+        strHTML += `<img class="img img-${img.id}" src="${img.url}" onclick="readUserSelectedImg(${img.id}); toggleMemeEditor()" />`;
+    });
+
+    elResults.innerHTML = strHTML;
+}
+
+function searchImgs() {
+    var elSearch = document.querySelector('.search-imgs');
+    var imgs = getImgsForDisplay(getImgsByKeyword(elSearch.value))
+    renderSearchResults(imgs)
 }
