@@ -1,0 +1,88 @@
+'use strict';
+
+var gElCanvas = document.querySelector('canvas');
+var gCtx = gElCanvas.getContext('2d');
+
+function initPage() {
+    createImgs();
+    renderImgs();
+}
+
+function renderImgs() {
+    var strHTML = '';
+    var elGallery = document.querySelector('.meme-imgs');
+    var imgs = getImgsForDisplay();
+    imgs.forEach(function (img) {
+        strHTML += `<img class="img img-${img.id}" src="${img.url}" onclick="readUserSelectedImg(${img.id}); toggleSections()" />`;
+    });
+
+    elGallery.innerHTML = strHTML;
+}
+
+function readUserSelectedImg(imgId) {
+    updateMemeInfo(imgId);
+    renderImgIntoCanvas(imgId);
+}
+
+function renderImgIntoCanvas(imgId) {
+    var meme = getCurrMeme();
+    if (!imgId) {
+        if (meme.selectedImgId) imgId = meme.selectedImgId;
+        else return;
+    }
+    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
+
+    var elSelectedImg = document.querySelector(`.img-${imgId}`);
+    var image = new Image(0, 0);
+    image.src = elSelectedImg.src;
+    var ratio = image.naturalHeight / image.naturalWidth;
+    gElCanvas.width = window.innerWidth - 25;
+    gElCanvas.height = gElCanvas.width * ratio;
+    gCtx.drawImage(image, 0, 0, gElCanvas.width, gElCanvas.height);
+}
+
+function readUserLine(txt) {
+    updateTxt(txt);
+    renderMeme();
+}
+
+function readUserTxtColor(color) {
+    updateTxtColor(color);
+    renderMeme();
+}
+
+function renderTxtOnCanvas() {
+    var meme = getCurrMeme();
+    gCtx.font = '40px "Arial"';
+    gCtx.fillStyle = meme.txts[0].color;;
+    gCtx.fillText(meme.txts[0].line, 50, 50);
+}
+
+function renderMeme() {
+    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
+    renderImgIntoCanvas();
+    renderTxtOnCanvas();
+}
+
+function toggleSections() {
+    toggleMemeEditor();
+    toggleGallery();
+}
+
+function toggleMemeEditor() {
+    var elMemeEditor = document.querySelector('.meme-editor');
+    if (elMemeEditor.style.maxHeight) {
+        elMemeEditor.style.maxHeight = null;
+    } else {
+        elMemeEditor.style.maxHeight = elMemeEditor.scrollHeight + 'px';
+    }
+}
+
+function toggleGallery() {
+    var elGallery = document.querySelector('.meme-imgs');
+    if (elGallery.style.maxHeight) {
+        elGallery.style.maxHeight = null;
+    } else {
+        elGallery.style.maxHeight = elGallery.scrollHeight + 'px';
+    }
+}
