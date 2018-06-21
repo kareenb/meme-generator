@@ -47,6 +47,10 @@ function addTxtLine() {
     gMeme.txts.push({ line: '', size: 30, font: 'Impact', color: 'black', align: 'center', shadow: 'off' });
 }
 
+function deleteTxtLine(idx) {
+    gMeme.txts.splice(idx, 1);
+}
+
 function updateTxt(txt, lineIdx) {
     gMeme.txts[lineIdx].line = txt;
 }
@@ -86,4 +90,13 @@ function getImgById(imgId) {
     for (var i = 0; i < gImgs.length; i++) {
         if (gImgs[i].id === imgId) return gImgs[i];
     }
+}
+
+function downloadMeme() {
+    var link = document.getElementById('download');
+    var canvas = document.querySelector('canvas');
+    console.log(canvas);
+    
+    link.href = canvas.toDataURL();
+    link.download = 'meme.png';
 }
