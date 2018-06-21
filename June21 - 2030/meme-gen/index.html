@@ -4,25 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="lib/hamburgers/dist/hamburgers.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet" />
     <title>Meme Generator</title>
 </head>
 
 <body onload="initPage()" onresize="renderMeme()">
+    <div class="menu-opacity" onclick="toggleMenu()"></div>
     <header>
-        <h1>Meme Generator</h1>
-        <button onclick="toggleGallery()">Create Meme</button>
+        <nav class="container flex space-between align-items-center">
+            <div class="logo flex">De Meme Generator</div>
+            <div class="btn-toggle-menu hamburger hamburger--collapse" type="button" onclick="toggleMenu()">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </div>
+            <ul class="main-menu clean-list">
+                <li onclick="toggleGallery()">
+                    <a href="#">Gallery</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Get In Touch</a>
+                </li>
+            </ul>
+        </nav>
     </header>
-    <section class="meme-imgs"></section>
+    <section class="conatiner meme-imgs"></section>
 
-    <main class="meme-editor">
+    <main class="conatiner meme-editor">
         <button onclick="toggleSections()">Return to gallery</button>
         <section class="txt-editor">
             <button>Add Line</button>
             <div class="control-box">
                 <input class="user-txt-box" type="text" onkeyup="readUserLine(this.value)" />
                 <!-- enlarge text -->
-                <button>+</button> 
+                <button>+</button>
                 <button>-</button>
                 <select onchange="readUserTxtColor(this.value)">
                     <option value="white">White</option>
@@ -43,6 +62,10 @@
             <canvas></canvas>
         </section>
     </main>
+
+    <footer class="conatiner flex">
+kljlkjkl
+    </footer>
 
     <!-- Scripts -->
     <script src="js/meme-service.js"></script>

@@ -1,35 +1,243 @@
+/* Font-Face */
+
+@font-face {
+    font-family: 'Lato';
+    font-weight: 400;
+    src: url('../lib/fonts/Lato/Lato-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Lato';
+    font-weight: 700;
+    src: url('../lib/fonts/Lato/Lato-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'MavenPro';
+    font-weight: 400;
+    src: url('../lib/fonts/Maven-Pro/MavenPro-Regular.ttf');
+}
+
 * {
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     padding: 0;
     margin: 0;
     min-height: 100vh;
+    font-family: 'Lato', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.img {
-    width: 100%;
-    max-width: 200px;
+body {
+    overflow-x: hidden;
 }
+
+h1 {
+    margin: 0;
+}
+
+/* Header */
+
+header {
+    position: sticky;
+    top: 0;
+    letter-spacing: 0.8px;
+    background-color: #323232;
+    box-shadow: inset 0 -6px 0 #1e1e1e;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 40px;
+    letter-spacing: -0.8px;
+    color: #2eb398;
+    text-transform: capitalize;
+}
+
+header .btn-toggle-menu {
+    display: block;
+    cursor: pointer;
+}
+
+header ul.main-menu {
+    width: 220px;
+    height: 100vh;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #323232;
+    transform: translate(100%, 0);
+    transition: all 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+header ul.main-menu.open {
+    transform: translate(0, 0);
+}
+
+header ul.main-menu li {
+    margin: 0 0 10px 0;
+}
+
+header ul.main-menu a {
+    display: block;
+    padding: 5px 0 10px 0;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    text-transform: capitalize;
+    transition: all 0.3s ease-in-out;
+}
+
+header ul.main-menu a:hover {
+    color: #2eb398;
+    box-shadow: inset 0 -6px 0 #2eb398;
+}
+
+.menu-opacity {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    right: 0;
+    background: rgba(0, 0, 0, 0.575);
+    transform: translate(100%, 0);
+    transition: all 0.2s ease-in-out;
+    z-index: 100;
+}
+
+.menu-opacity.opacity-open {
+    transform: translate(0, 0);
+}
+
+@media (min-width: 780px) {
+    header {
+        position: static;
+        height: 60px;
+        padding: 0;
+    }
+    header .btn-toggle-menu {
+        display: none;
+    }
+    header ul.main-menu {
+        width: auto;
+        height: auto;
+        display: flex;
+        position: static;
+        margin-right: 10px;
+        align-items: center;
+        background: transparent;
+        transform: translate(0, 0);
+    }
+    header ul.main-menu li {
+        margin: 0;
+        
+        line-height: 60px;
+        border-left: 1px solid #1e1e1e;
+    }
+    header ul.main-menu li:last-child {
+        border-right: 1px solid #1e1e1e;
+    }
+    header ul.main-menu a {
+        padding: 0 10px;
+    }
+    .menu-opacity.opacity-open {
+        transform: translate(100%, 0);
+    }
+}
+
+/* Gallery (Meme templates) */
 
 .meme-imgs {
     max-height: 0;
     overflow: hidden;
-    transition: all 0.4s ease-in-out;
-    border: 1px solid black;
+    column-count: 3;
+    column-gap: 5px;
+    transition: all 0.5s ease-in-out;
+}
+
+@media (min-width: 570px) {
+    .meme-imgs {
+        column-count: 4;
+    }
+}
+
+@media (min-width: 780px) {
+    .meme-imgs {
+        column-count: 5;
+    }
+}
+
+.meme-imgs img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
 }
 
 .meme-editor {
     max-height: 0;
     overflow: hidden;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
+
+/* Meme Editor */
 
 .meme-canvas {
     text-align: center;
 }
 
 canvas {
-    border: 1px solid black;
+    border: 1px solid #323232;
+}
+
+/* Footer */
+
+footer {
+    margin: 0 auto;
+    font-family: 'MavenPro', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #323232;
+}
+
+/* Helpers */
+
+
+.conatiner {
+    max-width: 1000px;
+}
+
+.clean-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.flex {
+    display: flex;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.space-evenly {
+    justify-content: space-evenly;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+    background-color: #2eb398;
 }
