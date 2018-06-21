@@ -3,9 +3,7 @@
 console.log('meme generator');
 
 var gId = 0;
-var gImgs = [
-    // { id: ++gId, url: `../meme-gen/meme-imgs/${gId}.jpg`, keywords: ['happy'] },
-];
+var gImgs = [];
 
 function createImgs() {
     var imgInfo = {};
@@ -19,7 +17,7 @@ function createImgs() {
     }
 }
 
-var gMeme = { txts: [ { line: '' } ] };
+var gMeme = { txts: [ { line: '', size: 30, font: 'Impact', color: 'black', align: 'center', shadow: 'off' } ] };
 
 function getImgsForDisplay(Ids) {
     if (!Ids) return gImgs;
@@ -46,7 +44,7 @@ function updateMemeInfo(imgId) {
 }
 
 function addTxtLine() {
-    gMeme.txts.push({ line: '' });
+    gMeme.txts.push({ line: '', size: 30, font: 'Impact', color: 'black', align: 'center', shadow: 'off' });
 }
 
 function updateTxt(txt, lineIdx) {
