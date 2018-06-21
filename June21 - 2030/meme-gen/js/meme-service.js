@@ -16,9 +16,9 @@ function createImgs() {
 }
 
 var gMeme = {
-    selectedImgId: 0,
+    // selectedImgId: 0,
     txts: [
-        { line: 'Text', size: 1, align: 'center', color: 'white', shadow: 'black' }
+        { line: 'Text', shadow: 'black' }
     ]
 };
 
@@ -40,4 +40,23 @@ function updateTxt(txt) {
 
 function updateTxtColor(color) {
     gMeme.txts[0].color = color;
+}
+
+function updateTxtSize(mathExpr) {
+    switch (mathExpr) {
+        case 'plus':
+            gMeme.txts[0].size += 1;
+            break;
+
+        case 'minus':
+            gMeme.txts[0].size -= 1;
+    }
+}
+
+function updateTxtFont(fontName) {
+    gMeme.txts[0].font = fontName;
+}
+
+function updateTxtAlign(direction) {
+    gMeme.txts[0].align = direction;
 }

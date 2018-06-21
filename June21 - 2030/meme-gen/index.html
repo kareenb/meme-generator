@@ -21,21 +21,29 @@
             <button>Add Line</button>
             <div class="control-box">
                 <input class="user-txt-box" type="text" onkeyup="readUserLine(this.value)" />
+                <select onchange="readUserTxtFont(this.value)">
+                    <option value="Impact">Impact</option>
+                    <option value="Arial">Arial</option>
+                    <option value="Sans-Serif">Sans-Serif</option>
+                </select>
                 <!-- enlarge text -->
-                <button>+</button> 
-                <button>-</button>
+                <button onclick="readUserTxtSize('plus')">+</button> 
+                <button onclick="readUserTxtSize('minus')">-</button>
                 <select onchange="readUserTxtColor(this.value)">
+                    <option value="black">Black</option>
                     <option value="white">White</option>
                     <option value="red">Red</option>
                     <option value="blue">Blue</option>
                 </select>
                 <!-- move text -->
-                <button>Align Left</button>
-                <button>Align Center</button>
-                <button>Align Right</button>
+                <select onchange="readUserTxtAlign(this.value)">
+                    <option value="center">Align Center</option>
+                    <option value="left">Align Left</option>
+                    <option value="right">Align Right</option>
+                </select>
 
-                <button>Move Up</button>
-                <button>Move Down</button>
+                <button onclick="readUserTxtYOnCanvas('up')">Move Up</button>
+                <button onclick="readUserTxtYOnCanvas('down')">Move Down</button>
 
             </div>
         </section>
