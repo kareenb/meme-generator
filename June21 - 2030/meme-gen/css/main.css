@@ -143,7 +143,8 @@ header ul.main-menu a:hover {
         padding: 0 10px;
     }
     .menu-opacity.opacity-open {
-        transform: translate(100%, 0);
+        transform: translateX(0);
+        transform: translateY(0);
     }
 }
 
@@ -156,9 +157,17 @@ main {
 /* Gallery (Meme templates) */
 
 .gallery {
+    height: 0;
+    overflow: hidden;
     column-count: 3;
     column-gap: 5px;
+    transform: translate(100%, 0);
     transition: all 0.5s ease-in-out;
+}
+
+.gallery.gallery-open {
+    height: auto;
+    transform: translate(0, 0);
 }
 
 @media (min-width: 570px) {
@@ -180,10 +189,8 @@ main {
 }
 
 .meme-editor {
-    position: absolute;
-    top: 58px;
-    width: 100%;
-    min-height: 100vh;
+    height: 0;
+    overflow: hidden;
     background: #323232;
     transform: translate(-100%, 0);
     transition: all 0.5s ease-in-out;
@@ -191,6 +198,7 @@ main {
 }
 
 .meme-editor.meme-editor-open {
+    height: auto;
     transform: translate(0, 0);
 }
 
@@ -209,13 +217,15 @@ canvas {
 footer {
     width: 100%;
     margin: 0 auto;
+    padding: 5px;
     font-family: 'MavenPro', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-top: 1px solid #2eb398;
     background: #323232;
 }
 
 /* Helpers */
 
-.conatiner {
+.container {
     max-width: 980px;
 }
 

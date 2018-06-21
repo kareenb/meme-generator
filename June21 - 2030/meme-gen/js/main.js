@@ -14,7 +14,7 @@ function renderImgGallery() {
     var elGallery = document.querySelector('.meme-imgs');
     var imgs = getImgsForDisplay();
     imgs.forEach(function (img) {
-        strHTML += `<img class="img img-${img.id}" src="${img.url}" onclick="readUserSelectedImg(${img.id}); toggleMemeEditor()" />`;
+        strHTML += `<img class="img img-${img.id}" src="${img.url}" onclick="readUserSelectedImg(${img.id}); toggleSections()" />`;
     });
 
     elGallery.innerHTML = strHTML;
@@ -42,9 +42,15 @@ function renderImgIntoCanvas(imgId) {
     gCtx.drawImage(image, 0, 0, gElCanvas.width, gElCanvas.height);
 }
 
+function toShowGallery() {
+    var elGarries = document.querySelectorAll('.gallery');
+    if (elGarries[0].classList.contains('gallery-open')) return;
+    toggleSections();
+}
+
 function toggleSections() {
     toggleMemeEditor();
-    // toggleGallery();
+    toggleGalleries();
 }
 
 function toggleMemeEditor() {
@@ -52,16 +58,14 @@ function toggleMemeEditor() {
     elMemeEditor.classList.toggle('meme-editor-open');
 }
 
-function toggleGallery() {
-    var elGallery = document.querySelector('.meme-imgs');
-    if (elGallery.style.maxHeight) {
-        elGallery.style.maxHeight = null;
-    } else {
-        elGallery.style.maxHeight = elGallery.scrollHeight + 'px';
-    }
+function toggleGalleries() {
+    var elGarries = document.querySelectorAll('.gallery');
+    elGarries.forEach(function (gallery){
+        gallery.classList.toggle('gallery-open');
+    });
 }
 
-function toggleMenu(elBtn) {
+function toggleMenu() {
     var elBtn = document.querySelector('.btn-toggle-menu');
     elBtn.classList.toggle('is-active');
 
