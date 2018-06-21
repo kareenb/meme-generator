@@ -13,7 +13,7 @@
     <div class="menu-opacity" onclick="toggleMenu()"></div>
     <header>
         <nav class="container flex space-between align-items-center">
-            <div class="logo flex">De Meme Generator</div>
+            <div class="logo flex">Memer</div>
             <div class="btn-toggle-menu hamburger hamburger--collapse" type="button" onclick="toggleMenu()">
                 <span class="hamburger-box">
                     <span class="hamburger-inner"></span>
@@ -35,9 +35,10 @@
 
     <main>
         <!-- Search memes -->
+        <div class="keywords-display flex space-evenly align-items-center"></div>
         <section class="container search-keywords gallery gallery-open">
             <input type="search" class="search-imgs" />
-            <button type="button" onclick="searchImgs()">search</button>
+            <button type="button" onclick="searchImgs(document.querySelector('.search-keywords input').value)">search</button>
             <div class="search-results "></div>
         </section>
         <!-- Meme templates gallery -->

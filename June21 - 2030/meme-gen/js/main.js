@@ -7,6 +7,7 @@ function initPage() {
     createImgs();
     renderImgGallery();
     initKeywords();
+    renderKeywords();
 }
 
 function renderImgGallery() {
@@ -76,6 +77,25 @@ function toggleMenu() {
     elOpacity.classList.toggle('opacity-open');
 }
 
+function renderKeywords() {
+    var keywords = loadKeywords();
+    var strHTML = '';
+    var numOfDisplayKeywords = (keywords.length < 15)? keywords.length : 15;
+
+    for (var i = 0; i < numOfDisplayKeywords; i++) {
+        var keyword = keywords[i];
+        strHTML += `<span style="font-size: `;
+        if (i === 0) strHTML += `0.7`;
+        else strHTML += i;
+        strHTML += `em;" onclick="searchImgs('${keyword.keyword}')">
+                        ${keyword.keyword}
+                    </span>`;
+    }
+
+    var elKeyWordsPanel = document.querySelector('.keywords-display');
+    elKeyWordsPanel.innerHTML += strHTML;
+}
+
 function renderSearchResults(imgs) {
     var strHTML = '';
     var elResults = document.querySelector('.search-results');
@@ -86,8 +106,7 @@ function renderSearchResults(imgs) {
     elResults.innerHTML = strHTML;
 }
 
-function searchImgs() {
-    var elSearch = document.querySelector('.search-imgs');
-    var imgs = getImgsForDisplay(getImgsByKeyword(elSearch.value))
-    renderSearchResults(imgs)
+function searchImgs(searchVal) {
+    var imgs = getImgsForDisplay(getImgsByKeyword(searchVal));
+    renderSearchResults(imgs);
 }

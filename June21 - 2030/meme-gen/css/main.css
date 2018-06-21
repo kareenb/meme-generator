@@ -188,6 +188,17 @@ main {
     cursor: pointer;
 }
 
+.keywords-display {
+    color: white;
+    background-color: rgb(252, 172, 23);
+    width: 100%;
+    height: 20vh;
+}
+
+.keywords-display span:hover {
+    cursor: pointer;
+}
+
 .meme-editor {
     height: 0;
     overflow: hidden;
