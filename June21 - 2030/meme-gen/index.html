@@ -37,10 +37,12 @@
     <main class="conatiner meme-editor">
         <button onclick="toggleSections()">Return to gallery</button>
         <section class="txt-editor">
-            <button>Add Line</button>
+            <button onclick="addLine()">Add Line</button>
+            <button onclick="updateLine('next')">Next Line</button>
+            <button onclick="updateLine('prev')">Prev Line</button>
             <div class="control-box">
                 <input class="user-txt-box" type="text" onkeyup="readUserLine(this.value)" />
-                <select onchange="readUserTxtFont(this.value)">
+                <select class="user-txt-font" onchange="readUserTxtFont(this.value)">
                     <option value="Impact">Impact</option>
                     <option value="Arial">Arial</option>
                     <option value="Sans-Serif">Sans-Serif</option>
@@ -48,14 +50,15 @@
                 <!-- enlarge text -->
                 <button onclick="readUserTxtSize('plus')">+</button> 
                 <button onclick="readUserTxtSize('minus')">-</button>
-                <select onchange="readUserTxtColor(this.value)">
+                <select class="user-txt-color" onchange="readUserTxtColor(this.value)">
                     <option value="black">Black</option>
                     <option value="white">White</option>
                     <option value="red">Red</option>
                     <option value="blue">Blue</option>
                 </select>
+                <button class="txt-shadow" onclick="readUserTxtShadow()">Text Shadow on</button>
                 <!-- move text -->
-                <select onchange="readUserTxtAlign(this.value)">
+                <select class="user-txt-align" onchange="readUserTxtAlign(this.value)">
                     <option value="center">Align Center</option>
                     <option value="left">Align Left</option>
                     <option value="right">Align Right</option>

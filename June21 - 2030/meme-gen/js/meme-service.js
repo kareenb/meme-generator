@@ -10,17 +10,12 @@ var gImgs = [
 function createImgs() {
     var imgInfo = {};
     while (gId < 25) {
-        imgInfo = {id: ++gId, url: `../meme-gen/meme-imgs/${gId}.jpg`};
+        imgInfo = { id: ++gId, url: `../meme-gen/meme-imgs/${gId}.jpg` };
         gImgs.push(imgInfo);
     }
 }
 
-var gMeme = {
-    // selectedImgId: 0,
-    txts: [
-        { line: 'Text', shadow: 'black' }
-    ]
-};
+var gMeme = { txts: [ { line: '' } ] };
 
 function getImgsForDisplay() {
     return gImgs;
@@ -34,29 +29,41 @@ function updateMemeInfo(imgId) {
     gMeme.selectedImgId = imgId;
 }
 
-function updateTxt(txt) {
-    gMeme.txts[0].line = txt;
+function addTxtLine() {
+    gMeme.txts.push({ line: '' });
 }
 
-function updateTxtColor(color) {
-    gMeme.txts[0].color = color;
+function updateTxt(txt, lineIdx) {
+    gMeme.txts[lineIdx].line = txt;
 }
 
-function updateTxtSize(mathExpr) {
+function updateTxtColor(color, lineIdx) {
+    gMeme.txts[lineIdx].color = color;
+}
+
+function updateTxtSize(mathExpr, lineIdx) {
     switch (mathExpr) {
         case 'plus':
-            gMeme.txts[0].size += 1;
+            gMeme.txts[lineIdx].size += 1;
             break;
 
         case 'minus':
-            gMeme.txts[0].size -= 1;
+            gMeme.txts[lineIdx].size -= 1;
     }
 }
 
-function updateTxtFont(fontName) {
-    gMeme.txts[0].font = fontName;
+function updateTxtFont(fontName, lineIdx) {
+    gMeme.txts[lineIdx].font = fontName;
 }
 
-function updateTxtAlign(direction) {
-    gMeme.txts[0].align = direction;
+function updateTxtAlign(direction, lineIdx) {
+    gMeme.txts[lineIdx].align = direction;
+}
+
+function updateTxtShadow(lineIdx) {
+    if ((!gMeme.txts[lineIdx].shadow) || gMeme.txts[lineIdx].shadow === 'off') {
+        gMeme.txts[lineIdx].shadow = 'on';
+    } else if (gMeme.txts[lineIdx].shadow === 'on') {
+        gMeme.txts[lineIdx].shadow = 'off';
+    }
 }
