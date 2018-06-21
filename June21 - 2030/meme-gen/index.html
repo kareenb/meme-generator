@@ -33,7 +33,7 @@
         </nav>
     </header>
 
-    <main>
+    <main class="flex column">
         <!-- Search memes -->
         <section class="container search-keywords gallery gallery-open">
             <input type="search" class="search-imgs" />
@@ -44,12 +44,14 @@
         <section class="container meme-imgs gallery gallery-open"></section>
 
         <!-- Meme Editor -->
-        <section class="meme-editor">
-            <button onclick="toggleSections()">Return to gallery</button>
+        <section class="meme-editor flex">
             <section class="txt-editor">
+                <button onclick="toggleSections()">Return to gallery</button>
+                <a onclick="downloadMeme()" id="download">Download Meme</a>
                 <button onclick="addLine()">Add Line</button>
                 <button onclick="updateLine('next')">Next Line</button>
                 <button onclick="updateLine('prev')">Prev Line</button>
+                <button onclick="deleteLine()">Delete Line</button>
                 <div class="control-box">
                     <input class="user-txt-box" type="text" onkeyup="readUserLine(this.value)" />
                     <select class="user-txt-font" onchange="readUserTxtFont(this.value)">
@@ -85,6 +87,49 @@
         </section>
 
     </main>
+
+    <section class="about flex">
+        <div class="team-member flex">
+            <div class="member-img">
+                <img src="../meme-gen/meme-imgs/1.jpg" />
+            </div>
+            <div class="member-data">
+                <h2 class="member-name">Kareen Ben Ari</h2>
+                <h4 class="member-title">Full Stack Developer</h4>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. In odit aliquam architecto at corporis, est ipsum labore, officia
+                    similique minima reiciendis explicabo temporibus accusamus et soluta voluptate? Minus, temporibus odio.
+                </p>
+                <ul class="social-links clean-list flex">
+                    <li>
+                        <a href="https://www.facebook.com/bla">f</a>
+                    </li>
+                    <li>
+                        <a>l</a>
+                    </li>
+                    <li>
+                        <a>i</a>
+                    </li>
+                    <li>
+                        <a>m</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="team-member flex">
+            <div class="member-img">
+                <img src="../meme-gen/meme-imgs/1.jpg" />
+            </div>
+            <div class="member-data">
+                <div class="member-name">Shlomi Hafif</div>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. In odit aliquam architecto at corporis, est ipsum labore, officia
+                    similique minima reiciendis explicabo temporibus accusamus et soluta voluptate? Minus, temporibus odio.
+                </p>
+                <div class="social-links">links</div>
+            </div>
+        </div>
+    </section>
 
     <footer class="flex">
         <section class="container">

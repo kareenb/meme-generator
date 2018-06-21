@@ -27,7 +27,7 @@ body {
     padding: 0;
     margin: 0;
     min-height: 100vh;
-    font-family: 'Lato', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'MavenPro', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -162,10 +162,11 @@ main {
     column-count: 3;
     column-gap: 5px;
     transform: translate(100%, 0);
-    transition: all 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out;
 }
 
 .gallery.gallery-open {
+    flex: 1 0 auto;
     height: auto;
     transform: translate(0, 0);
 }
@@ -189,27 +190,101 @@ main {
 }
 
 .meme-editor {
+    
+    flex-direction: column;
     height: 0;
     overflow: hidden;
     background: #323232;
     transform: translate(-100%, 0);
-    transition: all 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out;
     z-index: 50;
 }
 
 .meme-editor.meme-editor-open {
+    flex: 1 0 auto;
     height: auto;
     transform: translate(0, 0);
 }
 
-/* Meme Editor */
+/* Text Editor */
+
+.txt-editor {
+    max-width: 300px;
+    flex-grow: 1;
+    order: 2;
+}
+
+/* Meme Editor - Canvas */
 
 .meme-canvas {
+    min-width: 300px;
+    flex-grow: 1;
+    order: 1;
     text-align: center;
 }
 
 canvas {
     border: 1px solid #323232;
+}
+
+@media (min-width: 780px) {
+    .meme-editor {
+        flex-direction: row;
+    }
+}
+
+/* About Us */
+.about {
+    width: 100%;
+    flex-direction: column;
+    background: #2eb398;
+}
+
+.team-member {
+    margin-bottom: 10px;
+}
+
+.about img {
+    width: 175px;
+    height: 175px;
+    margin: 5px;
+    border-radius: 50%;
+    border: 7px solid white;
+}
+
+.about h2 {
+    margin: 10px 0 0;
+    color: white;
+}
+
+.about h4 {
+    margin: 0 0 10px;
+    color: #20816d;
+}
+
+.about ul.social-links li {
+    background: #a4dbd4;
+    transition: all 0.3s ease-in-out;
+}
+
+.about ul.social-links li:hover {
+    background: #20816d;
+}
+
+
+.about ul.social-links li a {
+    display: block;
+    text-decoration: none;
+    padding: 10px;
+}
+
+@media (min-width: 780px) {
+    .about {
+        flex-direction: row;
+    }
+    .team-member {
+        margin: 0;
+    }
 }
 
 /* Footer */

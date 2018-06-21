@@ -45,6 +45,13 @@ function addLine() {
     adjustControls();
 }
 
+function deleteLine() {
+    deleteTxtLine(gLineIdx);
+    renderMeme();
+    gLineIdx = 0;
+    adjustControls();
+}
+
 function readUserLine(txt) {
     updateTxt(txt, gLineIdx);
     renderMeme();
@@ -123,8 +130,11 @@ function updateLine(lineOrder) {
 
 function adjustControls() {
     var meme = getCurrMeme();
+    if (meme.txts.length === 0) {
+        addLine();
+        return;
+    }
     var currLine = meme.txts[gLineIdx];
-    
     document.querySelector('.user-txt-box').value = currLine.line;
 
     var colorOpts = document.querySelectorAll('.user-txt-color option');

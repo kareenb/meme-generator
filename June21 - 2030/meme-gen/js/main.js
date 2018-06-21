@@ -66,6 +66,7 @@ function toggleGalleries() {
 }
 
 function toggleMenu() {
+    if (window.innerWidth > 780) return;
     var elBtn = document.querySelector('.btn-toggle-menu');
     elBtn.classList.toggle('is-active');
 
