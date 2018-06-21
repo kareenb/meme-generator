@@ -5,10 +5,10 @@ var gCtx = gElCanvas.getContext('2d');
 
 function initPage() {
     createImgs();
-    renderImgs();
+    renderImgGallery();
 }
 
-function renderImgs() {
+function renderImgGallery() {
     var strHTML = '';
     var elGallery = document.querySelector('.meme-imgs');
     var imgs = getImgsForDisplay();
@@ -51,11 +51,62 @@ function readUserTxtColor(color) {
     renderMeme();
 }
 
+function readUserTxtSize(mathExpr) {
+    updateTxtSize(mathExpr);
+    renderMeme();
+}
+
+function readUserTxtFont(fontName) {
+    updateTxtFont(fontName);
+    renderMeme();
+}
+
+function readUserTxtAlign(direction) {
+    updateTxtAlign(direction);
+    renderMeme();
+}
+
+function alignTxtOnCanvas(direction) {
+    var canvasTxtX;
+    switch (direction) {
+        case 'center':
+            return canvasTxtX = gElCanvas.width / 2;
+        case 'left':
+            return canvasTxtX = 20;
+        case 'right':
+            return canvasTxtX = gElCanvas.width - 20;
+    }
+}
+
+function readUserTxtYOnCanvas(direction) {
+    var meme = getCurrMeme();
+    switch (direction) {
+        case 'up':
+            meme.txts[0].height -= 5;
+            renderMeme();
+            break;
+        case 'down':
+            meme.txts[0].height += 5;
+            renderMeme();
+            break;
+    }
+}
+
 function renderTxtOnCanvas() {
     var meme = getCurrMeme();
-    gCtx.font = '40px "Arial"';
-    gCtx.fillStyle = meme.txts[0].color;;
-    gCtx.fillText(meme.txts[0].line, 50, 50);
+    if (!meme.txts[0].size) meme.txts[0].size = 30;
+    if (!meme.txts[0].font) meme.txts[0].font = 'Impact';
+    if (!meme.txts[0].color) meme.txts[0].color = 'black';
+    if (!meme.txts[0].align) meme.txts[0].align = 'center';
+    if (!meme.txts[0].height) meme.txts[0].height = 50;
+
+    gCtx.font = `${meme.txts[0].size}px "${meme.txts[0].font}"`;
+    gCtx.fillStyle = meme.txts[0].color;
+    gCtx.textAlign = `${meme.txts[0].align}`;
+
+    var canvasTxtX = alignTxtOnCanvas(meme.txts[0].align);
+    var canvasTxtY = meme.txts[0].height;
+    gCtx.fillText(meme.txts[0].line, canvasTxtX, canvasTxtY);
 }
 
 function renderMeme() {
