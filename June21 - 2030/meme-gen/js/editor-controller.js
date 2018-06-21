@@ -150,4 +150,8 @@ function adjustControls() {
             break;
         }
     }
+
+    var elTxtShadowBtn = document.querySelector('.txt-shadow');
+    if (currLine.shadow === 'on') elTxtShadowBtn.innerText = 'Text Shadow off';
+    else elTxtShadowBtn.innerText = 'Text Shadow on';
 }
