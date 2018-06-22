@@ -76,8 +76,8 @@ function readUserTxtShadow() {
     updateTxtShadow(gLineIdx);
     var meme = getCurrMeme();
     var elTxtShadowBtn = document.querySelector('.txt-shadow');
-    if (meme.txts[gLineIdx].shadow === 'on') elTxtShadowBtn.innerText = 'Text Shadow off';
-    else elTxtShadowBtn.innerText = 'Text Shadow on';
+    if (meme.txts[gLineIdx].shadow === 'on') elTxtShadowBtn.classList.add('active');
+    else elTxtShadowBtn.classList.remove('active');
     renderMeme();
 }
 
@@ -137,13 +137,9 @@ function adjustControls() {
     var currLine = meme.txts[gLineIdx];
     document.querySelector('.user-txt-box').value = currLine.line;
 
-    var colorOpts = document.querySelectorAll('.user-txt-color option');
-    for (var i = 0; i < colorOpts.length; i++) {
-        if (colorOpts[i].value === currLine.color) {
-            document.querySelector('.user-txt-color').options.selectedIndex = i;
-            break;
-        }
-    }
+    document.querySelector('.user-txt-color').value = currLine.color;
+    document.querySelector('.user-txt-color').style.color = currLine.color;
+    document.querySelector('.user-txt-color').style.background = currLine.color;
 
     var fontOpts = document.querySelectorAll('.user-txt-font option');
     for (var i = 0; i < fontOpts.length; i++) {
@@ -162,6 +158,6 @@ function adjustControls() {
     }
 
     var elTxtShadowBtn = document.querySelector('.txt-shadow');
-    if (currLine.shadow === 'on') elTxtShadowBtn.innerText = 'Text Shadow off';
-    else elTxtShadowBtn.innerText = 'Text Shadow on';
+    if (currLine.shadow === 'on') elTxtShadowBtn.classList.add('active');
+    else elTxtShadowBtn.classList.remove('active');
 }
