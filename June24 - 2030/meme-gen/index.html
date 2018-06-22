@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="lib/fontawesome-5.1.0/css/all.css" rel="stylesheet">
+    <link href="lib/hamburgers/dist/hamburgers.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet" />
+    <title>Meme Generator</title>
+</head>
+
+<body class="flex column" onload="initPage()" onresize="renderMeme()">
+    <div class="menu-opacity" onclick="toggleMenu()"></div>
+    <header>
+        <nav class="container flex space-between align-items-center">
+            <div class="logo flex">Memer</div>
+            <div class="btn-toggle-menu hamburger hamburger--collapse" type="button" onclick="toggleMenu()">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </div>
+            <ul class="main-menu clean-list">
+                <li onclick="toShowGallery(); toggleMenu()">
+                    <a href="#">Gallery</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Get In Touch</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="flex column">
+        <!-- Search memes -->
+        <div class="keywords-display flex space-evenly align-items-center"></div>
+        <section class="container search-keywords gallery gallery-open">
+            <input type="search" class="search-imgs" />
+            <button type="button" onclick="searchImgs(document.querySelector('.search-keywords input').value)">search</button>
+            <div class="search-results "></div>
+        </section>
+        <!-- Meme templates gallery -->
+        <section class="container meme-imgs gallery gallery-open"></section>
+
+        <!-- Meme Editor -->
+        <section class="meme-editor flex">
+            <section class="txt-editor">
+                <button onclick="toggleSections()">Return to gallery</button>
+                <a onclick="downloadMeme()" id="download">Download Meme</a>
+                <button onclick="addLine()">Add Line</button>
+                <button onclick="updateLine('next')">Next Line</button>
+                <button onclick="updateLine('prev')">Prev Line</button>
+                <button onclick="deleteLine()">Delete Line</button>
+                <div class="control-box">
+                    <input class="user-txt-box" type="text" onkeyup="readUserLine(this.value)" />
+                    <select class="user-txt-font" onchange="readUserTxtFont(this.value)">
+                        <option value="Impact">Impact</option>
+                        <option value="Arial">Arial</option>
+                        <option value="Sans-Serif">Sans-Serif</option>
+                    </select>
+                    <!-- enlarge text -->
+                    <button onclick="readUserTxtSize('plus')">+</button>
+                    <button onclick="readUserTxtSize('minus')">-</button>
+                    <select class="user-txt-color" onchange="readUserTxtColor(this.value)">
+                        <option value="black">Black</option>
+                        <option value="white">White</option>
+                        <option value="red">Red</option>
+                        <option value="blue">Blue</option>
+                    </select>
+                    <button class="txt-shadow" onclick="readUserTxtShadow()">Text Shadow on</button>
+                    <!-- move text -->
+                    <select class="user-txt-align" onchange="readUserTxtAlign(this.value)">
+                        <option value="center">Align Center</option>
+                        <option value="left">Align Left</option>
+                        <option value="right">Align Right</option>
+                    </select>
+
+                    <button onclick="readUserTxtHeightOnCanvas('up')">Move Up</button>
+                    <button onclick="readUserTxtHeightOnCanvas('down')">Move Down</button>
+
+                </div>
+            </section>
+            <section class="meme-canvas">
+                <canvas></canvas>
+            </section>
+        </section>
+
+    </main>
+
+    <section class="about-wrapper" id="about-us">
+        <div class="about container flex">
+            <div class="team-member flex align-items-center">
+                <div class="member-img">
+                    <img src="../meme-gen/meme-imgs/1.jpg" />
+                </div>
+                <div class="member-data">
+                    <h2 class="member-name">Kareen Ben Ari</h2>
+                    <h4 class="member-title">Full Stack Developer</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. In odit aliquam architecto at corporis, est ipsum labore, officia
+                        similique minima reiciendis explicabo?
+                    </p>
+                    <ul class="social-links clean-list flex">
+                        <li>
+                            <a href="https://www.facebook.com/bla">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/bla">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:kareen@gmail.com">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="team-member flex align-items-center">           
+                <div class="member-img">
+                    <img src="../meme-gen/meme-imgs/1.jpg" />
+                </div>
+                <div class="member-data">
+                    <h2 class="member-name">Shlomi Hafif</h2>
+                    <h4 class="member-title">Full Stack Developer</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. In odit aliquam architecto at corporis, est ipsum labore, officia
+                        similique minima reiciendis explicabo?
+                    </p>
+                    <ul class="social-links clean-list flex">
+                        <li>
+                            <a href="https://www.facebook.com/bla">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/bla">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:shlomixg@gmail.com">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <footer class="flex" id="contact-us">
+        <section class="container">
+            &copy; copyrights
+        </section>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/meme-service.js"></script>
+    <script src="js/keywords-service.js"></script>
+    <script src="js/editor-controller.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
