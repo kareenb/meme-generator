@@ -35,58 +35,58 @@
     </header>
 
     <main class="flex column">
-        <!-- Search memes -->
-        <div class="keywords-display flex space-evenly align-items-center"></div>
-        <section class="container search-keywords gallery gallery-open">
-            <input type="search" class="search-imgs" />
-            <button type="button" onclick="searchImgs(document.querySelector('.search-keywords input').value)">search</button>
-            <div class="search-results "></div>
-        </section>
-        <!-- Meme templates gallery -->
-        <section class="container meme-imgs gallery gallery-open"></section>
-
-         <!-- Meme Editor -->
-         <section class="meme-editor flex">
-                <button class="btn back" onclick="toggleSections()">Back to gallery</button>
-    
-                <section class="txt-editor flex column space-between">
-                    <div class="control-box">
-                        <div class="control-txt flex">
-                            <button class="btn add-line" onclick="addLine()">+</button>
-                            <input class="user-txt-box" type="text" onkeyup="readUserLine(this.value)" />
-                            <!-- enlarge text -->
-                            <button class="btn bigger-txt" onclick="readUserTxtSize('plus')">A</button>
-                            <button class="btn smaller-txt" onclick="readUserTxtSize('minus')">A</button>
-                            <button class="btn txt-shadow" onclick="readUserTxtShadow()">A</button>
-                            <input class="btn user-txt-color jscolor" onchange="readUserTxtColor(this.value)">
-                            <select class="user-txt-font" onchange="readUserTxtFont(this.value)">
-                                <option value="Impact">Impact</option>
-                                <option value="Arial">Arial</option>
-                                <option value="Sans-Serif">Sans-Serif</option>
-                            </select>
-                            <!-- move text -->
-                            <select class="user-txt-align" onchange="readUserTxtAlign(this.value)">
-                                <option value="center">Align Center</option>
-                                <option value="left">Align Left</option>
-                                <option value="right">Align Right</option>
-                            </select>
-    
-                            <button class="btn" onclick="readUserTxtHeightOnCanvas('up')">▲</button>
-                            <button class="btn" onclick="readUserTxtHeightOnCanvas('down')">▼</button>
-    
-                        </div>
-                        <div class="control-lines">
-                            <button class="btn" onclick="updateLine('prev')">◄</button>
-                            <button class="btn" onclick="updateLine('next')">►</button>
-                            <button class="btn" onclick="deleteLine()">␡</button>
-                        </div>
-                    </div>
-                    <a class="btn download" onclick="downloadMeme()" id="download">Download Meme</a>
-                </section>
-                <section class="meme-canvas">
-                    <canvas></canvas>
-                </section>
+        <!-- Display & Search Memes -->
+        <seaction class="container">
+            <div class="keywords-display flex space-evenly align-items-center"></div>
+            <section class="search-keywords">
+                <input type="search" class="search-imgs" />
+                <button type="button" onclick="searchImgs(document.querySelector('.search-keywords input').value)">search</button>
+                <div class="search-results "></div>
             </section>
+            <section class="gallery meme-imgs"></section>
+        </seaction>
+        <!-- Meme Editor -->
+        <section class="nonedis container meme-editor flex">
+            <button class="btn back" onclick="toggleSections()">Back to gallery</button>
+
+            <section class="txt-editor flex column space-between">
+                <div class="control-box">
+                    <div class="control-txt flex">
+                        <button class="btn add-line" onclick="addLine()">+</button>
+                        <input class="user-txt-box" type="text" onkeyup="readUserLine(this.value)" />
+                        <!-- enlarge text -->
+                        <button class="btn bigger-txt" onclick="readUserTxtSize('plus')">A</button>
+                        <button class="btn smaller-txt" onclick="readUserTxtSize('minus')">A</button>
+                        <button class="btn txt-shadow" onclick="readUserTxtShadow()">A</button>
+                        <input class="btn user-txt-color jscolor" onchange="readUserTxtColor(this.value)">
+                        <select class="user-txt-font" onchange="readUserTxtFont(this.value)">
+                            <option value="Impact">Impact</option>
+                            <option value="Arial">Arial</option>
+                            <option value="Sans-Serif">Sans-Serif</option>
+                        </select>
+                        <!-- move text -->
+                        <select class="user-txt-align" onchange="readUserTxtAlign(this.value)">
+                            <option value="center">Align Center</option>
+                            <option value="left">Align Left</option>
+                            <option value="right">Align Right</option>
+                        </select>
+
+                        <button class="btn" onclick="readUserTxtHeightOnCanvas('up')">▲</button>
+                        <button class="btn" onclick="readUserTxtHeightOnCanvas('down')">▼</button>
+
+                    </div>
+                    <div class="control-lines">
+                        <button class="btn" onclick="updateLine('prev')">◄</button>
+                        <button class="btn" onclick="updateLine('next')">►</button>
+                        <button class="btn" onclick="deleteLine()">␡</button>
+                    </div>
+                </div>
+                <a class="btn download" onclick="downloadMeme()" id="download">Download Meme</a>
+            </section>
+            <section class="meme-canvas">
+                <canvas></canvas>
+            </section>
+        </section>
 
     </main>
 
@@ -122,7 +122,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="team-member flex align-items-center">           
+            <div class="team-member flex align-items-center">
                 <div class="member-img">
                     <img src="../meme-gen/meme-imgs/1.jpg" />
                 </div>

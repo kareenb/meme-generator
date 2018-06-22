@@ -34,14 +34,11 @@ body {
     overflow-x: hidden;
 }
 
-h1 {
-    margin: 0;
-}
-
 /* Header */
 
 header {
     position: sticky;
+    height: 3.75em;
     top: 0;
     letter-spacing: 0.8px;
     background-color: #323232;
@@ -50,7 +47,9 @@ header {
 }
 
 .logo {
-    font-size: 40px;
+    padding: 0 5px;
+    font-size: 2.5em;
+    line-height: 1.5em;
     letter-spacing: -0.8px;
     color: #2eb398;
     text-transform: capitalize;
@@ -103,7 +102,7 @@ header ul.main-menu a:hover {
     right: 0;
     background: rgba(0, 0, 0, 0.575);
     transform: translate(100%, 0);
-    transition: all 0.2s ease-in-out;
+    transition: all 0.25s ease-in-out;
     z-index: 100;
 }
 
@@ -114,8 +113,6 @@ header ul.main-menu a:hover {
 @media (min-width: 780px) {
     header {
         position: static;
-        height: 60px;
-        padding: 0;
     }
     header .btn-toggle-menu {
         display: none;
@@ -125,15 +122,13 @@ header ul.main-menu a:hover {
         height: auto;
         display: flex;
         position: static;
-        margin-right: 10px;
         align-items: center;
         background: transparent;
         transform: translate(0, 0);
     }
     header ul.main-menu li {
         margin: 0;
-        
-        line-height: 60px;
+        line-height: 3.75em;
         border-left: 1px solid #1e1e1e;
     }
     header ul.main-menu li:last-child {
@@ -143,8 +138,7 @@ header ul.main-menu a:hover {
         padding: 0 10px;
     }
     .menu-opacity.opacity-open {
-        transform: translateX(0);
-        transform: translateY(0);
+        transform: translate(100%, 0);
     }
 }
 
@@ -152,22 +146,30 @@ header ul.main-menu a:hover {
 
 main {
     flex: 1 0 auto;
+    height: calc(100vh - 3.75em);
 }
 
 /* Gallery (Meme templates) */
 
+.display {
+    flex: 1 0 auto;
+    position: absolute;
+    width: 100%;
+    top: 3.75em;
+    right: 0;
+    background: purple;
+}
+
 .gallery {
-    height: 0;
     overflow: hidden;
     column-count: 3;
     column-gap: 5px;
-    transform: translate(100%, 0);
+    /* transform: translate(100%, 0); */
     transition: transform 0.5s ease-in-out;
 }
 
 .gallery.gallery-open {
     flex: 1 0 auto;
-    height: auto;
     transform: translate(0, 0);
 }
 
@@ -193,16 +195,26 @@ main {
     color: white;
     background-color: rgb(252, 172, 23);
     width: 100%;
-    height: 20vh;
+    height: auto;
 }
 
 .keywords-display span:hover {
     cursor: pointer;
 }
 
+.nonedis {
+    display: none !important;
+}
+
 .meme-editor {
+    position: absolute;
+    width: 100%;
+    top: 3.75em;
+    right: 0;
+    background: purple;
+    height: calc(100vh - 3.75em);
+
     flex-direction: column;
-    height: 0;
     overflow: hidden;
     background: #323232;
     transform: translate(-100%, 0);
@@ -232,7 +244,8 @@ main {
     margin: 10px 0;
 }
 
-.btn.back:hover, .download:hover {
+.btn.back:hover,
+.download:hover {
     text-decoration: underline;
     color: rgb(252, 172, 23);
 }
@@ -253,7 +266,8 @@ main {
     color: white;
 }
 
-.control-box .btn, .control-box input {
+.control-box .btn,
+.control-box input {
     border: 1px solid black;
     height: 27px;
 }
@@ -320,6 +334,7 @@ canvas {
 }
 
 /* About Us */
+
 .about-wrapper {
     width: 100%;
     background: #2eb398;
@@ -327,7 +342,6 @@ canvas {
 
 .about {
     flex-direction: column;
-    
 }
 
 .team-member {
@@ -360,7 +374,6 @@ canvas {
 .about ul.social-links li:hover {
     background: #6ccbbe;
 }
-
 
 .about ul.social-links li a {
     display: block;
