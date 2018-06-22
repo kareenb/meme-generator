@@ -45,56 +45,52 @@
         <!-- Meme templates gallery -->
         <section class="container meme-imgs gallery gallery-open"></section>
 
-         <!-- Meme Editor -->
-         <section class="meme-editor flex">
-                <button class="btn back" onclick="toggleSections()">Back to gallery</button>
-    
-                <section class="txt-editor flex column space-between">
-                    <div class="control-box">
-                        <div class="control-txt flex">
-                            <button class="btn add-line" onclick="addLine()">+</button>
-                            <input class="user-txt-box" type="text" onkeyup="readUserLine(this.value)" />
-                            <!-- enlarge text -->
-                            <button class="btn bigger-txt" onclick="readUserTxtSize('plus')">A</button>
-                            <button class="btn smaller-txt" onclick="readUserTxtSize('minus')">A</button>
-                            <button class="btn txt-shadow" onclick="readUserTxtShadow()">A</button>
-                            <input class="btn user-txt-color jscolor" onchange="readUserTxtColor(this.value)">
-                            <select class="user-txt-font" onchange="readUserTxtFont(this.value)">
-                                <option value="Impact">Impact</option>
-                                <option value="Arial">Arial</option>
-                                <option value="Sans-Serif">Sans-Serif</option>
-                            </select>
-                            <!-- move text -->
-                            <select class="user-txt-align" onchange="readUserTxtAlign(this.value)">
-                                <option value="center">Align Center</option>
-                                <option value="left">Align Left</option>
-                                <option value="right">Align Right</option>
-                            </select>
-    
-                            <button class="btn" onclick="readUserTxtHeightOnCanvas('up')">▲</button>
-                            <button class="btn" onclick="readUserTxtHeightOnCanvas('down')">▼</button>
-    
-                        </div>
-                        <div class="control-lines">
-                            <button class="btn" onclick="updateLine('prev')">◄</button>
-                            <button class="btn" onclick="updateLine('next')">►</button>
-                            <button class="btn" onclick="deleteLine()">␡</button>
-                        </div>
+        <!-- Meme Editor -->
+        <section class="meme-editor flex">
+            <button class="btn back" onclick="toggleSections()">Back to gallery</button>
+            <section class="txt-editor flex column space-between">
+                <div class="control-box">
+                    <div class="control-txt flex">
+                        <button class="btn add-line" onclick="addLine()">+</button>
+                        <input class="user-txt-box" type="text" onkeyup="readUserLine(this.value)" />
+                        <!-- enlarge text -->
+                        <button class="btn bigger-txt" onclick="readUserTxtSize('plus')">A</button>
+                        <button class="btn smaller-txt" onclick="readUserTxtSize('minus')">A</button>
+                        <button class="btn txt-shadow" onclick="readUserTxtShadow()">A</button>
+                        <input class="btn user-txt-color jscolor" onchange="readUserTxtColor(this.value)">
+                        <select class="user-txt-font" onchange="readUserTxtFont(this.value)">
+                            <option value="Impact">Impact</option>
+                            <option value="Arial">Arial</option>
+                            <option value="Sans-Serif">Sans-Serif</option>
+                        </select>
+                        <!-- move text -->
+                        <select class="user-txt-align" onchange="readUserTxtAlign(this.value)">
+                            <option value="center">Align Center</option>
+                            <option value="left">Align Left</option>
+                            <option value="right">Align Right</option>
+                        </select>
+                        <button class="btn" onclick="readUserTxtHeightOnCanvas('up')">▲</button>
+                        <button class="btn" onclick="readUserTxtHeightOnCanvas('down')">▼</button>
                     </div>
-                    <a class="btn download" onclick="downloadMeme()" id="download">Download Meme</a>
-                </section>
-                <section class="meme-canvas">
-                    <canvas></canvas>
-                </section>
+                    <div class="control-lines">
+                        <button class="btn" onclick="updateLine('prev')">◄</button>
+                        <button class="btn" onclick="updateLine('next')">►</button>
+                        <button class="btn" onclick="deleteLine()">␡</button>
+                    </div>
+                </div>
+                <a class="btn download" onclick="downloadMeme()" id="download">Download Meme</a>
             </section>
-
+            <section class="meme-canvas">
+                <canvas></canvas>
+            </section>
+        </section>
     </main>
 
     <section class="about-wrapper" id="about-us">
         <div class="about container flex">
             <div class="team-member flex align-items-center">
                 <div class="member-img">
-                    <img src="../meme-gen/meme-imgs/1.jpg" />
+                    <img src="../meme-gen/img/team/kareen.jpg" />
                 </div>
                 <div class="member-data">
                     <h2 class="member-name">Kareen Ben Ari</h2>
@@ -105,26 +101,26 @@
                     </p>
                     <ul class="social-links clean-list flex">
                         <li>
-                            <a href="https://www.facebook.com/bla">
+                            <a href="https://www.facebook.com/kareenb">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.linkedin.com/bla">
+                            <a href="https://www.linkedin.com/in/kareen-ben-ari-b76a30159/">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="mailto:kareen@gmail.com">
+                            <a href="mailto:kareenb89@gmail.com">
                                 <i class="fas fa-envelope"></i>
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="team-member flex align-items-center">           
+            <div class="team-member flex align-items-center">
                 <div class="member-img">
-                    <img src="../meme-gen/meme-imgs/1.jpg" />
+                    <img src="../meme-gen/img/meme-imgs/1.jpg" />
                 </div>
                 <div class="member-data">
                     <h2 class="member-name">Shlomi Hafif</h2>
@@ -156,8 +152,22 @@
 
     </section>
 
-    <footer class="contact-us-wrapper" id="contact-us">
-        <section class="contact-us container flex">
+    <section class="contact-wrapper" id="contact">
+        <section class="contact container">
+            <h2>Get In Touch</h2>
+            <h3>Fill the form and send us a message:</h3>
+            <form class="contact-form flex column">
+                <input class="user-name" type="text" placeholder="Name" />
+                <!-- <input class="user-email" type="email" placeholder="Email" /> -->
+                <input class="msg-subj" type="text" placeholder="Subject" />
+                <textarea type="text" placeholder="Write your message here..."></textarea>
+                <button onclick="sendUserMsg()">Send</button>
+            </form>
+        </section>
+    </section>
+
+    <footer>
+        <section class="container flex">
             &copy; copyrights
         </section>
     </footer>

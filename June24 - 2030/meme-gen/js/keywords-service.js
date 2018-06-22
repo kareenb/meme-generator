@@ -54,17 +54,27 @@ function saveKeywords(keywords) {
 function createKeyWords(keywords) {
     keywords.push({
         keyword: 'happy',
-        imgs: [1, 2],
+        imgs: [2, 9, 13, 17, 22],
         searchCount: 15
     });
     keywords.push({
         keyword: 'matrix',
-        imgs: [9],
+        imgs: [1],
         searchCount: 10
     });
     keywords.push({
         keyword: 'animal',
-        imgs: [10, 15, 20],
+        imgs: [4, 6, 7, 16],
         searchCount: 5
+    });
+    keywords.push({
+        keyword: 'movie',
+        imgs: [1, 2, 8, 11, 20, 23, 25],
+        searchCount: 18
+    });
+    keywords.push({
+        keyword: 'trump',
+        imgs: [3, 14],
+        searchCount: 18
     });
 }
