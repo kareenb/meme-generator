@@ -24,6 +24,7 @@ function renderImgGallery() {
 function readUserSelectedImg(imgId) {
     updateMemeInfo(imgId);
     renderImgIntoCanvas(imgId);
+    adjustControls();    
 }
 
 function renderImgIntoCanvas(imgId) {
@@ -86,8 +87,8 @@ function renderKeywords() {
     for (var i = 0; i < numOfDisplayKeywords; i++) {
         var keyword = keywords[i];
         strHTML += `<span style="font-size: `;
-        if (i === 0) strHTML += `0.7`;
-        else strHTML += i;
+        if (i === 0) strHTML += `0.5`;
+        else strHTML += i * 0.8;
         strHTML += `em;" onclick="searchImgs('${keyword.keyword}')">
                         ${keyword.keyword}
                     </span>`;
@@ -101,7 +102,7 @@ function renderSearchResults(imgs) {
     var strHTML = '';
     var elResults = document.querySelector('.search-results');
     imgs.forEach(function (img) {
-        strHTML += `<img class="img img-${img.id}" src="${img.url}" onclick="readUserSelectedImg(${img.id}); toggleMemeEditor()" />`;
+        strHTML += `<img class="img img-${img.id}" src="${img.url}" onclick="readUserSelectedImg(${img.id}); toggleSections()" />`;
     });
 
     elResults.innerHTML = strHTML;

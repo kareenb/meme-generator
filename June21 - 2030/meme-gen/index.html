@@ -46,41 +46,41 @@
 
         <!-- Meme Editor -->
         <section class="meme-editor flex">
-            <section class="txt-editor">
-                <button onclick="toggleSections()">Return to gallery</button>
-                <a onclick="downloadMeme()" id="download">Download Meme</a>
-                <button onclick="addLine()">Add Line</button>
-                <button onclick="updateLine('next')">Next Line</button>
-                <button onclick="updateLine('prev')">Prev Line</button>
-                <button onclick="deleteLine()">Delete Line</button>
+            <button class="btn back" onclick="toggleSections()">Back to gallery</button>
+
+            <section class="txt-editor flex column space-between">
                 <div class="control-box">
-                    <input class="user-txt-box" type="text" onkeyup="readUserLine(this.value)" />
-                    <select class="user-txt-font" onchange="readUserTxtFont(this.value)">
-                        <option value="Impact">Impact</option>
-                        <option value="Arial">Arial</option>
-                        <option value="Sans-Serif">Sans-Serif</option>
-                    </select>
-                    <!-- enlarge text -->
-                    <button onclick="readUserTxtSize('plus')">+</button>
-                    <button onclick="readUserTxtSize('minus')">-</button>
-                    <select class="user-txt-color" onchange="readUserTxtColor(this.value)">
-                        <option value="black">Black</option>
-                        <option value="white">White</option>
-                        <option value="red">Red</option>
-                        <option value="blue">Blue</option>
-                    </select>
-                    <button class="txt-shadow" onclick="readUserTxtShadow()">Text Shadow on</button>
-                    <!-- move text -->
-                    <select class="user-txt-align" onchange="readUserTxtAlign(this.value)">
-                        <option value="center">Align Center</option>
-                        <option value="left">Align Left</option>
-                        <option value="right">Align Right</option>
-                    </select>
+                    <div class="control-txt flex">
+                        <button class="btn add-line" onclick="addLine()">+</button>
+                        <input class="user-txt-box" type="text" onkeyup="readUserLine(this.value)" />
+                        <!-- enlarge text -->
+                        <button class="btn bigger-txt" onclick="readUserTxtSize('plus')">A</button>
+                        <button class="btn smaller-txt" onclick="readUserTxtSize('minus')">A</button>
+                        <button class="btn txt-shadow" onclick="readUserTxtShadow()">A</button>
+                        <input class="btn user-txt-color jscolor" onchange="readUserTxtColor(this.value)">
+                        <select class="user-txt-font" onchange="readUserTxtFont(this.value)">
+                            <option value="Impact">Impact</option>
+                            <option value="Arial">Arial</option>
+                            <option value="Sans-Serif">Sans-Serif</option>
+                        </select>
+                        <!-- move text -->
+                        <select class="user-txt-align" onchange="readUserTxtAlign(this.value)">
+                            <option value="center">Align Center</option>
+                            <option value="left">Align Left</option>
+                            <option value="right">Align Right</option>
+                        </select>
 
-                    <button onclick="readUserTxtHeightOnCanvas('up')">Move Up</button>
-                    <button onclick="readUserTxtHeightOnCanvas('down')">Move Down</button>
+                        <button class="btn" onclick="readUserTxtHeightOnCanvas('up')">▲</button>
+                        <button class="btn" onclick="readUserTxtHeightOnCanvas('down')">▼</button>
 
+                    </div>
+                    <div class="control-lines">
+                        <button class="btn" onclick="updateLine('prev')">◄</button>
+                        <button class="btn" onclick="updateLine('next')">►</button>
+                        <button class="btn" onclick="deleteLine()">␡</button>
+                    </div>
                 </div>
+                <a class="btn download" onclick="downloadMeme()" id="download">Download Meme</a>
             </section>
             <section class="meme-canvas">
                 <canvas></canvas>
@@ -139,6 +139,7 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="js/jscolor.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/keywords-service.js"></script>
