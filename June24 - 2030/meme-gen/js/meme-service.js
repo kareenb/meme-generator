@@ -10,7 +10,7 @@ function createImgs() {
     while (gId < 25) {
         imgInfo = {
             id: ++gId,
-            url: `../meme-gen/meme-imgs/${gId}.jpg`,
+            url: `../meme-gen/img/meme-imgs/${gId}.jpg`,
             keywords: []
         };
         gImgs.push(imgInfo);

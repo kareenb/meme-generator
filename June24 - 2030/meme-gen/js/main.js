@@ -7,7 +7,7 @@ function initPage() {
     createImgs();
     renderImgGallery();
     initKeywords();
-    renderKeywords();
+    renderKeywordsDisplay();
 }
 
 function renderImgGallery() {
@@ -24,7 +24,7 @@ function renderImgGallery() {
 function readUserSelectedImg(imgId) {
     updateMemeInfo(imgId);
     renderImgIntoCanvas(imgId);
-    adjustControls();    
+    adjustControls();
 }
 
 function renderImgIntoCanvas(imgId) {
@@ -62,7 +62,7 @@ function toggleMemeEditor() {
 
 function toggleGalleries() {
     var elGarries = document.querySelectorAll('.gallery');
-    elGarries.forEach(function (gallery){
+    elGarries.forEach(function (gallery) {
         gallery.classList.toggle('gallery-open');
     });
 }
@@ -79,23 +79,30 @@ function toggleMenu() {
     elOpacity.classList.toggle('opacity-open');
 }
 
-function renderKeywords() {
+function renderKeywordsDisplay() {
     var keywords = loadKeywords();
     var strHTML = '';
-    var numOfDisplayKeywords = (keywords.length < 15)? keywords.length : 15;
+    var numOfDisplayKeywords = (keywords.length < 15) ? keywords.length : 15;
+    var displayKeywords = [];
 
     for (var i = 0; i < numOfDisplayKeywords; i++) {
         var keyword = keywords[i];
-        strHTML += `<span style="font-size: `;
+        strHTML = `<span style="font-size: `;
         if (i === 0) strHTML += `0.5`;
         else strHTML += i * 0.8;
         strHTML += `em;" onclick="searchImgs('${keyword.keyword}')">
                         ${keyword.keyword}
                     </span>`;
+        displayKeywords.push(strHTML);
     }
 
     var elKeyWordsPanel = document.querySelector('.keywords-display');
-    elKeyWordsPanel.innerHTML += strHTML;
+    while (displayKeywords.length > 0) {
+        strHTML = '';
+        var elKeyword = displayKeywords.splice(getRandomInt(0, displayKeywords.length), 1);
+        strHTML = elKeyword[0];
+        elKeyWordsPanel.innerHTML += strHTML;        
+    }
 }
 
 function renderSearchResults(imgs) {
@@ -111,4 +118,13 @@ function renderSearchResults(imgs) {
 function searchImgs(searchVal) {
     var imgs = getImgsForDisplay(getImgsByKeyword(searchVal));
     renderSearchResults(imgs);
+}
+
+function sendUserMsg() {
+    var userName = document.querySelector('.contact .user-name').value;
+    var msgSubj = document.querySelector('.contact .msg-subj').value;
+    var msgBody = document.querySelector('.contact textarea').value;
+    msgBody += `
+                From: ${userName}`;
+    window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=kareenb89@gmail.com&su=${msgSubj}&body=${msgBody}`, '_blank');
 }

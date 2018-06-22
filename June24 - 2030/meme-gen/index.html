@@ -94,7 +94,7 @@
         <div class="about container flex">
             <div class="team-member flex align-items-center">
                 <div class="member-img">
-                    <img src="../meme-gen/meme-imgs/1.jpg" />
+                    <img src="../meme-gen/img/team/kareen.jpg" />
                 </div>
                 <div class="member-data">
                     <h2 class="member-name">Kareen Ben Ari</h2>
@@ -105,17 +105,17 @@
                     </p>
                     <ul class="social-links clean-list flex">
                         <li>
-                            <a href="https://www.facebook.com/bla">
+                            <a href="https://www.facebook.com/kareenb">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.linkedin.com/bla">
+                            <a href="https://www.linkedin.com/in/kareen-ben-ari-b76a30159/">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="mailto:kareen@gmail.com">
+                            <a href="mailto:kareenb89@gmail.com">
                                 <i class="fas fa-envelope"></i>
                             </a>
                         </li>
@@ -124,7 +124,7 @@
             </div>
             <div class="team-member flex align-items-center">
                 <div class="member-img">
-                    <img src="../meme-gen/meme-imgs/1.jpg" />
+                    <img src="../meme-gen/img/meme-imgs/1.jpg" />
                 </div>
                 <div class="member-data">
                     <h2 class="member-name">Shlomi Hafif</h2>
@@ -156,8 +156,22 @@
 
     </section>
 
-    <footer class="contact-us-wrapper" id="contact-us">
-        <section class="contact-us container flex">
+    <section class="contact-wrapper" id="contact">
+        <section class="contact container">
+            <h2>Get In Touch</h2>
+            <h3>Fill the form and send us a message:</h3>
+            <form class="contact-form flex column">
+                <input class="user-name" type="text" placeholder="Name" />
+                <!-- <input class="user-email" type="email" placeholder="Email" /> -->
+                <input class="msg-subj" type="text" placeholder="Subject" />
+                <textarea type="text" placeholder="Write your message here..."></textarea>
+                <button onclick="sendUserMsg()">Send</button>
+            </form>
+        </section>
+    </section>
+
+    <footer>
+        <section class="container flex">
             &copy; copyrights
         </section>
     </footer>
