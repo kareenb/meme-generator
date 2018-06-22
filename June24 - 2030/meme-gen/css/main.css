@@ -201,7 +201,6 @@ main {
 }
 
 .meme-editor {
-    
     flex-direction: column;
     height: 0;
     overflow: hidden;
@@ -219,16 +218,92 @@ main {
 
 /* Text Editor */
 
+.btn:hover {
+    cursor: pointer;
+}
+
+.btn.back {
+    font-family: 'MavenPro', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    color: white;
+    border: none;
+    background-color: transparent;
+    align-self: flex-start;
+    margin: 10px 0;
+}
+
+.btn.back:hover, .download:hover {
+    text-decoration: underline;
+    color: rgb(252, 172, 23);
+}
+
 .txt-editor {
     max-width: 300px;
     flex-grow: 1;
     order: 2;
 }
 
+.control-box .btn {
+    background-color: white;
+    color: black
+}
+
+.control-box .btn:hover {
+    background-color: rgb(252, 172, 23);
+    color: white;
+}
+
+.control-box .btn, .control-box input {
+    border: 1px solid black;
+    height: 27px;
+}
+
+.control-txt {
+    flex-wrap: wrap;
+    margin: 5px 0 20px;
+}
+
+.btn.add-line {
+    border: none;
+    border-radius: 50%;
+    background-color: rgb(252, 172, 23);
+    color: white;
+    font-size: 1.3em;
+}
+
+.btn.add-line:hover {
+    background-color: #2eb398;
+}
+
+.active {
+    box-shadow: inset 1px 1px 2px 0px #736e6e;
+}
+
+.bigger-txt {
+    font-size: 1.1em;
+}
+
+.smaller-txt {
+    font-size: .7em;
+}
+
+.txt-shadow {
+    text-shadow: -3px -1px 2px #413f3f;
+}
+
+.download {
+    color: white;
+    margin-bottom: 5px;
+}
+
+.user-txt-color {
+    width: 30px;
+}
+
 /* Meme Editor - Canvas */
 
 .meme-canvas {
-    min-width: 300px;
+    /* min-width: 300px; */
     flex-grow: 1;
     order: 1;
     text-align: center;

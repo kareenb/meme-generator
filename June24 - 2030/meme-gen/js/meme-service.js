@@ -44,7 +44,7 @@ function updateMemeInfo(imgId) {
 }
 
 function addTxtLine() {
-    gMeme.txts.push({ line: '', size: 30, font: 'Impact', color: 'black', align: 'center', shadow: 'off' });
+    gMeme.txts.push({ line: '', size: 30, font: 'Impact', color: '#000000', align: 'center', shadow: 'off' });
 }
 
 function deleteTxtLine(idx) {
@@ -56,7 +56,7 @@ function updateTxt(txt, lineIdx) {
 }
 
 function updateTxtColor(color, lineIdx) {
-    gMeme.txts[lineIdx].color = color;
+    gMeme.txts[lineIdx].color = '#' + color;
 }
 
 function updateTxtSize(mathExpr, lineIdx) {
