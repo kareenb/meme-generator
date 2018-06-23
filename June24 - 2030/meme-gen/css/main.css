@@ -196,6 +196,8 @@ main {
     background-color: rgb(252, 172, 23);
     width: 100%;
     height: auto;
+    padding: 10px;
+    flex-wrap: wrap;
 }
 
 .keywords-display span:hover {

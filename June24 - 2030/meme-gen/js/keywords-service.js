@@ -8,6 +8,7 @@ function initKeywords() {
     if (!gKeywords || gKeywords.length === 0) {
         gKeywords = [];
         createKeyWords(gKeywords);
+        sortKeywordsBySearchs();
         saveKeywords(gKeywords);
     }
     matchKeywords();
@@ -39,7 +40,7 @@ function getImgsByKeyword(keyword) {
 
 function sortKeywordsBySearchs() {
     gKeywords.sort(function (a, b) {
-        return a.searchCount - b.searchCount;
+        return b.searchCount - a.searchCount;
     });
 }
 
@@ -70,11 +71,11 @@ function createKeyWords(keywords) {
     keywords.push({
         keyword: 'movie',
         imgs: [1, 2, 8, 11, 20, 23, 25],
-        searchCount: 18
+        searchCount: 28
     });
     keywords.push({
         keyword: 'trump',
         imgs: [3, 14],
-        searchCount: 18
+        searchCount: 300
     });
 }

@@ -82,15 +82,13 @@ function toggleMenu() {
 function renderKeywordsDisplay() {
     var keywords = loadKeywords();
     var strHTML = '';
-    var numOfDisplayKeywords = (keywords.length < 15) ? keywords.length : 15;
+    var numOfDisplayKeywords = (keywords.length < 7) ? keywords.length : 7;
     var displayKeywords = [];
+    var fontSizeRatios = getFontSizeRatios(keywords, numOfDisplayKeywords);
 
     for (var i = 0; i < numOfDisplayKeywords; i++) {
         var keyword = keywords[i];
-        strHTML = `<span style="font-size: `;
-        if (i === 0) strHTML += `0.5`;
-        else strHTML += i * 0.8;
-        strHTML += `em;" onclick="searchImgs('${keyword.keyword}')">
+        strHTML = `<span style="font-size: ${fontSizeRatios.shift()}em;" onclick="searchImgs('${keyword.keyword}')">
                         ${keyword.keyword}
                     </span>`;
         displayKeywords.push(strHTML);
@@ -103,6 +101,21 @@ function renderKeywordsDisplay() {
         strHTML = elKeyword[0];
         elKeyWordsPanel.innerHTML += strHTML;        
     }
+}
+
+function getFontSizeRatios(keywords, numOfDispKeywords) {
+    var prevSearchCount = keywords[0].searchCount 
+    var fontSizeRatio = 3;
+    var fontSizeRatios = [];
+    for (var i = 0; i < numOfDispKeywords; i++) {
+        var currKeyword = keywords[i];
+        if (currKeyword.searchCount === prevSearchCount) fontSizeRatios.push(fontSizeRatio);
+        else {
+            fontSizeRatio -= 0.5;
+            fontSizeRatios.push(fontSizeRatio);
+        }
+    }
+    return fontSizeRatios;
 }
 
 function renderSearchResults(imgs) {
