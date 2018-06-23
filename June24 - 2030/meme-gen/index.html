@@ -11,7 +11,9 @@
 </head>
 
 <body class="flex column" onload="initPage()" onresize="renderMeme()">
+    <!-- Opacity cover when side-nav menu is open -->
     <div class="menu-opacity" onclick="toggleMenu()"></div>
+    <!-- Navigation bar -->
     <header>
         <nav class="container flex space-between align-items-center">
             <div class="logo flex">Memer</div>
@@ -21,8 +23,8 @@
                 </span>
             </div>
             <ul class="main-menu clean-list">
-                <li onclick="toShowGallery(); toggleMenu()">
-                    <a href="#">Gallery</a>
+                <li>
+                    <a href="#" onclick="toShowGallery(); toggleMenu()">Gallery</a>
                 </li>
                 <li>
                     <a href="#">About</a>
@@ -36,29 +38,32 @@
 
     <main class="flex column">
         <!-- Display & Search Memes -->
-        <seaction class="container">
+        <section class="container gallery-wrapper gallery-wrapper-open">
             <div class="keywords-display flex space-evenly align-items-center"></div>
             <section class="search-keywords">
                 <input type="search" class="search-imgs" />
                 <button type="button" onclick="searchImgs(document.querySelector('.search-keywords input').value)">search</button>
-                <div class="search-results "></div>
+                <button type="button" onclick="renderImgGallery()">show all</button>
             </section>
-            <section class="gallery meme-imgs"></section>
-        </seaction>
+            <ul class="gallery clean-list">
+            </ul>
+        </section>
         <!-- Meme Editor -->
-        <section class="nonedis container meme-editor flex">
-            <button class="btn back" onclick="toggleSections()">Back to gallery</button>
-
+        <section class="container meme-editor flex">
+            <div class="back-to-gallery">
+                <button class="btn-edit back" onclick="toggleSections()">Back to gallery</button>
+            </div>
+            
             <section class="txt-editor flex column space-between">
                 <div class="control-box">
                     <div class="control-txt flex">
-                        <button class="btn add-line" onclick="addLine()">+</button>
+                        <button class="btn-edit add-line" onclick="addLine()">+</button>
                         <input class="user-txt-box" type="text" onkeyup="readUserLine(this.value)" />
                         <!-- enlarge text -->
-                        <button class="btn bigger-txt" onclick="readUserTxtSize('plus')">A</button>
-                        <button class="btn smaller-txt" onclick="readUserTxtSize('minus')">A</button>
-                        <button class="btn txt-shadow" onclick="readUserTxtShadow()">A</button>
-                        <input class="btn user-txt-color jscolor" onchange="readUserTxtColor(this.value)">
+                        <button class="btn-edit bigger-txt" onclick="readUserTxtSize('plus')">A</button>
+                        <button class="btn-edit smaller-txt" onclick="readUserTxtSize('minus')">A</button>
+                        <button class="btn-edit txt-shadow" onclick="readUserTxtShadow()">A</button>
+                        <input class="btn-edit user-txt-color jscolor" onchange="readUserTxtColor(this.value)">
                         <select class="user-txt-font" onchange="readUserTxtFont(this.value)">
                             <option value="Impact">Impact</option>
                             <option value="Arial">Arial</option>
@@ -71,17 +76,17 @@
                             <option value="right">Align Right</option>
                         </select>
 
-                        <button class="btn" onclick="readUserTxtHeightOnCanvas('up')">▲</button>
-                        <button class="btn" onclick="readUserTxtHeightOnCanvas('down')">▼</button>
+                        <button class="btn-edit" onclick="readUserTxtHeightOnCanvas('up')">▲</button>
+                        <button class="btn-edit" onclick="readUserTxtHeightOnCanvas('down')">▼</button>
 
                     </div>
                     <div class="control-lines">
-                        <button class="btn" onclick="updateLine('prev')">◄</button>
-                        <button class="btn" onclick="updateLine('next')">►</button>
-                        <button class="btn" onclick="deleteLine()">␡</button>
+                        <button class="btn-edit" onclick="updateLine('prev')">◄</button>
+                        <button class="btn-edit" onclick="updateLine('next')">►</button>
+                        <button class="btn-edit" onclick="deleteLine()">␡</button>
                     </div>
                 </div>
-                <a class="btn download" onclick="downloadMeme()" id="download">Download Meme</a>
+                <a class="btn-edit download" onclick="downloadMeme()" id="download">Download Meme</a>
             </section>
             <section class="meme-canvas">
                 <canvas></canvas>
@@ -124,7 +129,7 @@
             </div>
             <div class="team-member flex align-items-center">
                 <div class="member-img">
-                    <img src="../meme-gen/img/meme-imgs/1.jpg" />
+                    <img src="../meme-gen/img/team/shlomi.jpg" />
                 </div>
                 <div class="member-data">
                     <h2 class="member-name">Shlomi Hafif</h2>
@@ -135,12 +140,12 @@
                     </p>
                     <ul class="social-links clean-list flex">
                         <li>
-                            <a href="https://www.facebook.com/bla">
+                            <a href="https://www.facebook.com/ShlomiHafif">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.linkedin.com/bla">
+                            <a href="https://www.linkedin.com/in/shlomi-hafif-452304aa/">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
                         </li>

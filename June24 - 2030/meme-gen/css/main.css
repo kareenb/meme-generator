@@ -38,11 +38,10 @@ body {
 
 header {
     position: sticky;
-    height: 3.75em;
     top: 0;
+    height: 3.75em;
     letter-spacing: 0.8px;
     background-color: #323232;
-    box-shadow: inset 0 -6px 0 #1e1e1e;
     z-index: 1000;
 }
 
@@ -61,11 +60,11 @@ header .btn-toggle-menu {
 }
 
 header ul.main-menu {
-    width: 220px;
-    height: calc(100vh - 100%);
     position: absolute;
     top: 100%;
     right: 0;
+    width: 220px;
+    height: calc(100vh - 100%);
     background: #323232;
     transform: translate(100%, 0);
     transition: all 0.3s ease-in-out;
@@ -77,30 +76,34 @@ header ul.main-menu.open {
 }
 
 header ul.main-menu li {
-    margin: 0 0 10px 0;
+    border-bottom: 1px solid #1e1e1e;
+}
+
+header ul.main-menu li:first-child {
+    border-top: 1px solid #1e1e1e;
 }
 
 header ul.main-menu a {
     display: block;
-    padding: 5px 0 10px 0;
+    padding: 20px 0;
     text-align: center;
     text-decoration: none;
-    color: white;
+    color: #2eb398;
     text-transform: capitalize;
     transition: all 0.3s ease-in-out;
 }
 
 header ul.main-menu a:hover {
-    color: #2eb398;
-    box-shadow: inset 0 -6px 0 #2eb398;
+    color: white;
+    background: #2eb398;
 }
 
 .menu-opacity {
     position: fixed;
+    right: 0;
     width: 100%;
     height: 100%;
-    right: 0;
-    background: rgba(0, 0, 0, 0.575);
+    background: rgba(0, 0, 0, 0.6);
     transform: translate(100%, 0);
     transition: all 0.25s ease-in-out;
     z-index: 100;
@@ -118,10 +121,10 @@ header ul.main-menu a:hover {
         display: none;
     }
     header ul.main-menu {
+        position: static;
+        display: flex;
         width: auto;
         height: auto;
-        display: flex;
-        position: static;
         align-items: center;
         background: transparent;
         transform: translate(0, 0);
@@ -129,10 +132,14 @@ header ul.main-menu a:hover {
     header ul.main-menu li {
         margin: 0;
         line-height: 3.75em;
+        border: 0;
         border-left: 1px solid #1e1e1e;
     }
     header ul.main-menu li:last-child {
         border-right: 1px solid #1e1e1e;
+    }
+    header ul.main-menu li:first-child {
+        border-top: 0;
     }
     header ul.main-menu a {
         padding: 0 10px;
@@ -147,96 +154,92 @@ header ul.main-menu a:hover {
 main {
     flex: 1 0 auto;
     height: calc(100vh - 3.75em);
+    background: #736e6e;
 }
 
 /* Gallery (Meme templates) */
 
-.display {
-    flex: 1 0 auto;
-    position: absolute;
+.gallery-wrapper {
     width: 100%;
-    top: 3.75em;
-    right: 0;
-    background: purple;
-}
-
-.gallery {
-    overflow: hidden;
-    column-count: 3;
-    column-gap: 5px;
-    /* transform: translate(100%, 0); */
+    height: 100%;
+    transform: translate(200%, 0);
     transition: transform 0.5s ease-in-out;
 }
 
-.gallery.gallery-open {
-    flex: 1 0 auto;
+.gallery {
+    height: 80%;
+    overflow-y: auto;
+}
+
+.gallery li {
+    float: left;
+}
+
+.gallery-wrapper.gallery-wrapper-open {
     transform: translate(0, 0);
-}
-
-@media (min-width: 570px) {
-    .gallery {
-        column-count: 4;
-    }
-}
-
-@media (min-width: 780px) {
-    .gallery {
-        column-count: 5;
-    }
 }
 
 .gallery img {
     width: 100%;
+    max-width: 250px;
     height: auto;
     cursor: pointer;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.gallery:hover .img {
+    opacity: 0.45;
+}
+
+.gallery:hover .img:hover {
+    opacity: 1;
 }
 
 .keywords-display {
-    color: white;
-    background-color: rgb(252, 172, 23);
     width: 100%;
     height: auto;
     padding: 10px;
     flex-wrap: wrap;
+    color: white;
+    background-color: rgb(252, 172, 23);
 }
 
 .keywords-display span:hover {
     cursor: pointer;
 }
 
-.nonedis {
-    display: none !important;
-}
-
 .meme-editor {
     position: absolute;
-    width: 100%;
     top: 3.75em;
+    left: 0;
     right: 0;
-    background: purple;
+    width: 100%;
     height: calc(100vh - 3.75em);
-
+    margin: 0 auto;
     flex-direction: column;
-    overflow: hidden;
-    background: #323232;
-    transform: translate(-100%, 0);
+    flex-wrap: wrap;
+    align-content: flex-start;
+    background: #1e1e1e;
+    transform: translate(-200%, 0);
     transition: transform 0.5s ease-in-out;
-    z-index: 50;
 }
 
 .meme-editor.meme-editor-open {
-    flex: 1 0 auto;
-    height: auto;
     transform: translate(0, 0);
 }
 
 /* Text Editor */
 
-.btn:hover {
-    cursor: pointer;
+.back-to-gallery {
+    width: 100%;
 }
 
-.btn.back {
+.btn-edit {
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-edit.back {
     font-family: 'MavenPro', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
     color: white;
@@ -246,7 +249,7 @@ main {
     margin: 10px 0;
 }
 
-.btn.back:hover,
+.btn-edit.back:hover,
 .download:hover {
     text-decoration: underline;
     color: rgb(252, 172, 23);
@@ -258,20 +261,20 @@ main {
     order: 2;
 }
 
-.control-box .btn {
+.control-box .btn-edit {
+    color: black;
     background-color: white;
-    color: black
 }
 
-.control-box .btn:hover {
-    background-color: rgb(252, 172, 23);
+.control-box .btn-edit:hover {
     color: white;
+    background-color: rgb(252, 172, 23);
 }
 
-.control-box .btn,
+.control-box .btn-edit,
 .control-box input {
-    border: 1px solid black;
     height: 27px;
+    border: 1px solid black;
 }
 
 .control-txt {
@@ -279,15 +282,15 @@ main {
     margin: 5px 0 20px;
 }
 
-.btn.add-line {
+.btn-edit.add-line {
+    font-size: 1.3em;
+    color: white;
     border: none;
     border-radius: 50%;
     background-color: rgb(252, 172, 23);
-    color: white;
-    font-size: 1.3em;
 }
 
-.btn.add-line:hover {
+.btn-edit.add-line:hover {
     background-color: #2eb398;
 }
 
@@ -308,8 +311,8 @@ main {
 }
 
 .download {
-    color: white;
     margin-bottom: 5px;
+    color: white;
 }
 
 .user-txt-color {
@@ -318,20 +321,19 @@ main {
 
 /* Meme Editor - Canvas */
 
-.meme-canvas {
-    /* min-width: 300px; */
-    flex-grow: 1;
+.meme-canvas { 
+    flex-grow: 0;
     order: 1;
     text-align: center;
-}
-
-canvas {
-    border: 1px solid #323232;
 }
 
 @media (min-width: 780px) {
     .meme-editor {
         flex-direction: row;
+    }
+    .meme-canvas {
+        flex-grow: 1;
+        max-width: 700px;
     }
 }
 
@@ -379,9 +381,9 @@ canvas {
 
 .about ul.social-links li a {
     display: block;
+    padding: 10px;
     color: #1db49f;
     text-decoration: none;
-    padding: 10px;
 }
 
 @media (min-width: 780px) {
@@ -401,55 +403,56 @@ canvas {
 }
 
 .contact h2 {
+    margin: 0 0 8px;
     font-size: 30px;
     font-weight: normal;
     color: #e0e0e0;
-    margin: 0 0 8px;
 }
 
 .contact h3 {
+    margin: 10px 0 20px;
     font-size: 18px;
     font-weight: normal;
     color: #bebebe;
-    margin: 10px 0 20px;
 }
 
 .contact-form input {
+    height: 40px;
+    margin-bottom: 15px;
+    padding: 0 15px;
     font-family: 'Lato', sans-serif;
     font-size: 12px;
     color: #e0e0e0;
     border: none;
     background-color: #454545;
-    height: 40px;
-    padding: 0 15px;
-    margin-bottom: 15px;
 }
 
 .contact-form textarea {
+    height: 150px;
+    margin-bottom: 15px;
+    padding: 15px;
     font-family: 'Lato', sans-serif;
     font-size: 12px;
-    color: #e0e0e0;    
+    color: #e0e0e0;
     border: none;
     background-color: #454545;
-    height: 150px;
-    padding: 15px;
-    margin-bottom: 15px;
 }
 
-.contact-form input::placeholder, .contact-form textarea::placeholder {
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
     color: #bebebe;
 }
 
 .contact-form button {
     cursor: pointer;
+    align-self: flex-end;
+    padding: 15px 30px;
     font-family: 'Lato', sans-serif;
     font-size: 12px;
     text-transform: uppercase;
     color: #d7fcf5;
     border: none;
     background-color: #2eb398;
-    padding: 15px 30px;
-    align-self: flex-end;
     transition: all 0.3s ease-in-out;
 }
 
