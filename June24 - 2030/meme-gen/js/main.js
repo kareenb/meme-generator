@@ -46,6 +46,15 @@ function renderImgIntoCanvas(imgId) {
     var ratio = image.naturalHeight / image.naturalWidth;
     gElCanvas.width = document.querySelector('.meme-canvas').clientWidth - 30;
     gElCanvas.height = gElCanvas.width * ratio;
+
+    var divHeight = document.querySelector('.meme-canvas').clientHeight - 5;
+    if (gElCanvas.height > divHeight) {
+        console.log('ex');
+        
+        gElCanvas.height = divHeight;
+        gElCanvas.width = (image.naturalWidth / image.naturalHeight) * gElCanvas.height;
+    }
+
     gCtx.drawImage(image, 0, 0, gElCanvas.width, gElCanvas.height);
 }
 
@@ -61,8 +70,8 @@ function toggleSections() {
 }
 
 function toggleMemeEditor() {
-    var elMemeEditor = document.querySelector('.meme-editor');
-    elMemeEditor.classList.toggle('meme-editor-open');
+    var elMemeEditor = document.querySelector('.meme-editor-wrapper');
+    elMemeEditor.classList.toggle('meme-editor-wrapper-open');
 }
 
 function toggleGalleries() {

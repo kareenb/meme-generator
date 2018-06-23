@@ -48,49 +48,58 @@
             <ul class="gallery clean-list">
             </ul>
         </section>
+
         <!-- Meme Editor -->
-        <section class="container meme-editor flex">
-            <div class="back-to-gallery">
-                <button class="btn-edit back" onclick="toggleSections()">Back to gallery</button>
+        <section class="container meme-editor-wrapper">
+            <div class="meme-editor flex space-around">
+                <section class="meme-canvas flex column align-items-center">
+                    <div class="back-to-gallery">
+                        <button class="btn-edit back" onclick="toggleSections()">Back to gallery</button>
+                    </div>
+                    <canvas></canvas>
+                </section>
+                <!-- Text Editor -->
+                <section class="txt-editor flex column space-between">
+                    <ul class="clean-list flex social-share">
+                        <li><a class="btn download" onclick="downloadMeme()" id="download">Download Meme</a></li>
+                        <li><a class="btn-edit share">Share</a></li>
+                    </ul>
+                    
+                    <div class="control-box">
+                        <div class="control-txt flex">
+                            <button class="btn-edit add-line" onclick="addLine()">+</button>
+                            <input class="user-txt-box" type="text" onkeyup="readUserLine(this.value)" />
+                            <!-- enlarge text -->
+                            <button class="btn-edit bigger-txt" onclick="readUserTxtSize('plus')">A</button>
+                            <button class="btn-edit smaller-txt" onclick="readUserTxtSize('minus')">A</button>
+                            <button class="btn-edit txt-shadow" onclick="readUserTxtShadow()">A</button>
+                            <input class="btn-edit user-txt-color jscolor" onchange="readUserTxtColor(this.value)">
+                            <select class="user-txt-font" onchange="readUserTxtFont(this.value)">
+                                <option value="Impact">Impact</option>
+                                <option value="Arial">Arial</option>
+                                <option value="Sans-Serif">Sans-Serif</option>
+                            </select>
+                            <!-- move text -->
+                            <select class="user-txt-align" onchange="readUserTxtAlign(this.value)">
+                                <option value="center">Align Center</option>
+                                <option value="left">Align Left</option>
+                                <option value="right">Align Right</option>
+                            </select>
+
+                            <button class="btn-edit" onclick="readUserTxtHeightOnCanvas('up')">▲</button>
+                            <button class="btn-edit" onclick="readUserTxtHeightOnCanvas('down')">▼</button>
+
+                        </div>
+                        <div class="control-lines">
+                            <button class="btn-edit" onclick="updateLine('prev')">◄</button>
+                            <button class="btn-edit" onclick="updateLine('next')">►</button>
+                            <button class="btn-edit" onclick="deleteLine()">␡</button>
+                        </div>
+                    </div>
+
+                </section>
+
             </div>
-
-            <section class="txt-editor flex column space-between">
-                <div class="control-box">
-                    <div class="control-txt flex">
-                        <button class="btn-edit add-line" onclick="addLine()">+</button>
-                        <input class="user-txt-box" type="text" placeholder="Add text here" onkeyup="readUserLine(this.value)" />
-                        <!-- enlarge text -->
-                        <button class="btn-edit bigger-txt" onclick="readUserTxtSize('plus')">A</button>
-                        <button class="btn-edit smaller-txt" onclick="readUserTxtSize('minus')">A</button>
-                        <button class="btn-edit txt-shadow" onclick="readUserTxtShadow()">A</button>
-                        <input class="btn-edit user-txt-color jscolor" onchange="readUserTxtColor(this.value)">
-                        <select class="user-txt-font" onchange="readUserTxtFont(this.value)">
-                            <option value="Impact">Impact</option>
-                            <option value="Arial">Arial</option>
-                            <option value="Sans-Serif">Sans-Serif</option>
-                        </select>
-                        <!-- move text -->
-                        <select class="user-txt-align" onchange="readUserTxtAlign(this.value)">
-                            <option value="center">Align Center</option>
-                            <option value="left">Align Left</option>
-                            <option value="right">Align Right</option>
-                        </select>
-
-                        <button class="btn-edit" onclick="readUserTxtHeightOnCanvas('up')">▲</button>
-                        <button class="btn-edit" onclick="readUserTxtHeightOnCanvas('down')">▼</button>
-
-                    </div>
-                    <div class="control-lines">
-                        <button class="btn-edit" onclick="updateLine('prev')">◄</button>
-                        <button class="btn-edit" onclick="updateLine('next')">►</button>
-                        <button class="btn-edit" onclick="deleteLine()">␡</button>
-                    </div>
-                </div>
-                <a class="btn-edit download" onclick="downloadMeme()" id="download">Download Meme</a>
-            </section>
-            <section class="meme-canvas">
-                <canvas></canvas>
-            </section>
         </section>
 
     </main>
