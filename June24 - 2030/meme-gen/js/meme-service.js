@@ -17,7 +17,7 @@ function createImgs() {
     }
 }
 
-var gMeme = { txts: [ { line: '', size: 30, font: 'Impact', color: 'black', align: 'center', shadow: 'off' } ] };
+var gMeme = { txts: [ { line: '', size: 40, font: 'Impact', color: 'white', align: 'center', shadow: 'on' } ] };
 
 function getImgsForDisplay(Ids) {
     if (!Ids) return gImgs;

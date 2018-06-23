@@ -10,12 +10,12 @@ function initPage() {
     renderKeywordsDisplay();
 }
 
-function renderImgGallery() {
+function renderImgGallery(imgs) {
     var strHTML = '';
-    var elGallery = document.querySelector('.meme-imgs');
-    var imgs = getImgsForDisplay();
+    var elGallery = document.querySelector('.gallery');
+    if (!imgs) imgs = getImgsForDisplay();
     imgs.forEach(function (img) {
-        strHTML += `<img class="img img-${img.id}" src="${img.url}" onclick="readUserSelectedImg(${img.id}); toggleSections()" />`;
+        strHTML += `<li><div><img class="img img-${img.id}" src="${img.url}" onclick="readUserSelectedImg(${img.id}); toggleSections()" /></div></li>`;
     });
 
     elGallery.innerHTML = strHTML;
@@ -45,8 +45,8 @@ function renderImgIntoCanvas(imgId) {
 }
 
 function toShowGallery() {
-    var elGarries = document.querySelectorAll('.gallery');
-    if (elGarries[0].classList.contains('gallery-open')) return;
+    var elGallery = document.querySelector('.gallery-wrapper');
+    if (elGallery.classList.contains('gallery-wrapper-open')) return;
     toggleSections();
 }
 
@@ -61,10 +61,8 @@ function toggleMemeEditor() {
 }
 
 function toggleGalleries() {
-    var elGarries = document.querySelectorAll('.gallery');
-    elGarries.forEach(function (gallery) {
-        gallery.classList.toggle('gallery-open');
-    });
+    var elGallery = document.querySelector('.gallery-wrapper');
+    elGallery.classList.toggle('gallery-wrapper-open');
 }
 
 function toggleMenu() {
@@ -101,23 +99,13 @@ function renderKeywordsDisplay() {
         strHTML = '';
         var elKeyword = displayKeywords.splice(getRandomInt(0, displayKeywords.length), 1);
         strHTML = elKeyword[0];
-        elKeyWordsPanel.innerHTML += strHTML;        
+        elKeyWordsPanel.innerHTML += strHTML;
     }
-}
-
-function renderSearchResults(imgs) {
-    var strHTML = '';
-    var elResults = document.querySelector('.search-results');
-    imgs.forEach(function (img) {
-        strHTML += `<img class="img img-${img.id}" src="${img.url}" onclick="readUserSelectedImg(${img.id}); toggleSections()" />`;
-    });
-
-    elResults.innerHTML = strHTML;
 }
 
 function searchImgs(searchVal) {
     var imgs = getImgsForDisplay(getImgsByKeyword(searchVal));
-    renderSearchResults(imgs);
+    renderImgGallery(imgs);
 }
 
 function sendUserMsg() {
