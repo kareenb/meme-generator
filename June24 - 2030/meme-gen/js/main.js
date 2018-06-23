@@ -15,7 +15,12 @@ function renderImgGallery(imgs) {
     var elGallery = document.querySelector('.gallery');
     if (!imgs) imgs = getImgsForDisplay();
     imgs.forEach(function (img) {
-        strHTML += `<li><div><img class="img img-${img.id}" src="${img.url}" onclick="readUserSelectedImg(${img.id}); toggleSections()" /></div></li>`;
+        strHTML += `<li>
+                        <div class="hexagon img img-${img.id}" style="background-image: url('${img.url}')" onclick="readUserSelectedImg(${img.id}); toggleSections()">
+                            <div class="hex-top"></div>
+                            <div class="hex-bottom"></div>
+                        </div>
+                    </li>`;
     });
 
     elGallery.innerHTML = strHTML;
@@ -35,9 +40,9 @@ function renderImgIntoCanvas(imgId) {
     }
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
 
-    var elSelectedImg = document.querySelector(`.img-${imgId}`);
+    var selectedImg = getImgById(imgId);
     var image = new Image(0, 0);
-    image.src = elSelectedImg.src;
+    image.src = selectedImg.url;
     var ratio = image.naturalHeight / image.naturalWidth;
     gElCanvas.width = document.querySelector('.meme-canvas').clientWidth - 30;
     gElCanvas.height = gElCanvas.width * ratio;

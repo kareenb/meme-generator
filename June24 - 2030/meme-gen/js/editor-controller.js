@@ -14,15 +14,17 @@ function renderMeme() {
 function renderTxtOnCanvas(lineIdx) {
     var meme = getCurrMeme();
     var currLine = meme.txts[lineIdx];
-    // if (meme.txts.length > 1) currLine.height = prevLine.height + 50;
-    // else {
+    // if (meme.txts.length > 1) {
+    //     var prevLine = meme.txts[gLineIdx - 1];
+    //     currLine.height = prevLine.height + 50;
+    // } else {
         if (!currLine.height) currLine.height = 50;
     // }
 
     if (currLine.shadow === 'on') {
         gCtx.shadowOffsetX = -1.5;
         gCtx.shadowOffsetY = 1.2;
-        gCtx.shadowColor = 'grey';
+        gCtx.shadowColor = 'gray';
     } else {
         gCtx.shadowOffsetX = 0;
         gCtx.shadowOffsetY = 0;
@@ -76,8 +78,8 @@ function readUserTxtShadow() {
     updateTxtShadow(gLineIdx);
     var meme = getCurrMeme();
     var elTxtShadowBtn = document.querySelector('.txt-shadow');
-    if (meme.txts[gLineIdx].shadow === 'on') elTxtShadowBtn.classList.add('active');
-    else elTxtShadowBtn.classList.remove('active');
+    if (meme.txts[gLineIdx].shadow === 'on') elTxtShadowBtn.classList.add('shadow-active');
+    else elTxtShadowBtn.classList.remove('shadow-active');
     renderMeme();
 }
 
@@ -158,6 +160,6 @@ function adjustControls() {
     }
 
     var elTxtShadowBtn = document.querySelector('.txt-shadow');
-    if (currLine.shadow === 'on') elTxtShadowBtn.classList.add('active');
-    else elTxtShadowBtn.classList.remove('active');
+    if (currLine.shadow === 'on') elTxtShadowBtn.classList.add('shadow-active');
+    else elTxtShadowBtn.classList.remove('shadow-active');
 }

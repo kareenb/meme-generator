@@ -53,12 +53,12 @@
             <div class="back-to-gallery">
                 <button class="btn-edit back" onclick="toggleSections()">Back to gallery</button>
             </div>
-            
+
             <section class="txt-editor flex column space-between">
                 <div class="control-box">
                     <div class="control-txt flex">
                         <button class="btn-edit add-line" onclick="addLine()">+</button>
-                        <input class="user-txt-box" type="text" onkeyup="readUserLine(this.value)" />
+                        <input class="user-txt-box" type="text" placeholder="Add text here" onkeyup="readUserLine(this.value)" />
                         <!-- enlarge text -->
                         <button class="btn-edit bigger-txt" onclick="readUserTxtSize('plus')">A</button>
                         <button class="btn-edit smaller-txt" onclick="readUserTxtSize('minus')">A</button>

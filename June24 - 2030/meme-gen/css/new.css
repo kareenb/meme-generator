@@ -1,0 +1,95 @@
+.gallery .hexagon {
+    float: left;
+    margin: 51.96px 10px 10px 3px;
+}
+
+.hexagon.img-1, .hexagon.img-11, .hexagon.img-21 {
+    margin-left: 100px;
+}
+
+@media (max-width: 1095px) {
+    ul.gallery {
+        padding: 10px 10px;
+    }
+    .hexagon.img-11, .hexagon.img-21 {
+        margin-left: 3px;
+    }
+    .hexagon.img-10, .hexagon.img-19 {
+        margin-left: 100px;
+    }
+    .hexagon.img-23 {
+        margin-left: 197px;
+    }
+}
+
+@media (max-width: 1018px) {
+    .hexagon.img-10, .hexagon.img-19, .hexagon.img-23 {
+        margin-left: 3px;
+    }
+    .hexagon.img-9, .hexagon.img-17 {
+        margin-left: 100px;
+    }
+    .hexagon.img-25 {
+        margin-left: 293px;
+    }
+}
+
+@media (max-width: 922px) {
+    .hexagon.img-9, .hexagon.img-17 {
+        margin-left: 3px;
+    }
+    .hexagon.img-8, .hexagon.img-15, .hexagon.img-22 {
+        margin-left: 100px;
+    }
+    .hexagon.img-25 {
+        margin-left: 197px;
+    }
+}
+
+@media (max-width: 824px) {
+    .hexagon.img-8, .hexagon.img-15, .hexagon.img-22 {
+        margin-left: 3px;
+    }
+    .hexagon.img-7, .hexagon.img-13, .hexagon.img-19 {
+        margin-left: 100px;
+    }
+    .hexagon.img-25 {
+        margin-left: 99px;
+    }
+}
+
+@media (max-width: 728px) {
+    .hexagon.img-7, .hexagon.img-13, .hexagon.img-18, .hexagon.img-19, .hexagon.img-25 {
+        margin-left: 3px;
+    }
+    .hexagon.img-6, .hexagon.img-11, .hexagon.img-16, .hexagon.img-21 {
+        margin-left: 100px;
+    }
+}
+
+@media (max-width: 632px) {
+    .hexagon.img-6, .hexagon.img-11, .hexagon.img-16 {
+        margin-left: 3px;
+    }
+    .hexagon.img-5, .hexagon.img-9, .hexagon.img-13, .hexagon.img-17, .hexagon.img-25 {
+        margin-left: 100px;
+    }
+}
+
+@media (max-width: 536px) {
+    .hexagon.img-5, .hexagon.img-9, .hexagon.img-17, .hexagon.img-21 {
+        margin-left: 3px;
+    }
+    .hexagon.img-4, .hexagon.img-7, .hexagon.img-10, .hexagon.img-16, .hexagon.img-19, .hexagon.img-22 {
+        margin-left: 100px;
+    }
+}
+
+@media (max-width: 439px) {
+    .hexagon.img-4, .hexagon.img-10, .hexagon.img-16, .hexagon.img-22, .hexagon.img-24  {
+        margin-left: 3px;
+    }
+    .hexagon.img-3, .hexagon.img-5, .hexagon.img-9, .hexagon.img-11, .hexagon.img-13, .hexagon.img-15, .hexagon.img-17, .hexagon.img-21, .hexagon.img-23 {
+        margin-left: 100px;
+    }
+}
