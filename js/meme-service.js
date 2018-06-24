@@ -4,7 +4,7 @@ console.log('meme generator');
 
 var gId = 0;
 var gImgs = [];
-var gMeme = { txts: [ { line: '', size: 40, font: 'Impact', color: '#ffffff', align: 'center', shadow: 'on' } ] };
+var gMeme = { txts: [ { line: '', size: 40, font: 'Impact', color: '#ffffff', align: 'center', shadow: 'on' } ], image: null };
 
 function createImgs() {
     var imgInfo = {};
@@ -38,8 +38,15 @@ function getCurrMeme() {
     return gMeme;
 }
 
-function updateMemeInfo(imgId) {
-    gMeme.selectedImgId = imgId;
+function updateMemeInfo(imgId, img) {
+    if (imgId) {
+        gMeme.selectedImgId = imgId;
+        var selectedImg = getImgById(imgId);
+        gMeme.image = new Image(0, 0);
+        gMeme.image.src = selectedImg.url;
+    } else {
+        gMeme.image = img;
+    }
 }
 
 function addTxtLine() {

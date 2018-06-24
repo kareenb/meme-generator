@@ -107,10 +107,7 @@ function alignTxtOnCanvas(direction) {
 function upadteAlignButton(direction) {
     var elAlign = document.querySelector('.dropdown-wrapper')
     var elAlignBtns = document.querySelectorAll('.dropdown-list .btn-align');
-    console.log('fddf', elAlignBtns);
     for (var i = 0; i < elAlignBtns.length; i++) {
-        console.log('fddf', i);
-        
         if (elAlignBtns[i].value === direction) {
             elAlign.innerHTML = elAlignBtns[i].parentNode.innerHTML;
         }

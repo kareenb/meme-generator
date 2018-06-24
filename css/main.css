@@ -387,9 +387,28 @@ ul.control-box .dropdown-list.open-dropdown {
     margin-bottom: 5px;
     color: white;
 }
-ul.social-share li {
-    margin-right: 10px;
+ul.share-list {
+    margin-top: 5px;
 }
+
+ul.share-list .btn-share {
+    padding: 0;
+    width: 100%;
+    height: 35px;
+    cursor: pointer;
+    color: black;
+    border: 1px solid black;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+}
+ul.share-list .btn-share a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0 5px;
+    line-height: 35px;
+}
+
 
 /* About Us */
 

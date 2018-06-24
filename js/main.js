@@ -32,21 +32,14 @@ function renderImgGallery(imgs) {
 
 function readUserSelectedImg(imgId) {
     updateMemeInfo(imgId);
-    renderImgIntoCanvas(imgId);
+    renderImgIntoCanvas();
     adjustControls();
 }
 
-function renderImgIntoCanvas(imgId) {
-    var meme = getCurrMeme();
-    if (!imgId) {
-        if (meme.selectedImgId) imgId = meme.selectedImgId;
-        else return;
-    }
+function renderImgIntoCanvas() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
-
-    var selectedImg = getImgById(imgId);
-    var image = new Image(0, 0);
-    image.src = selectedImg.url;
+    
+    var image = getCurrMeme().image;
     var ratio = image.naturalHeight / image.naturalWidth;
     gElCanvas.width = document.querySelector('.meme-canvas').clientWidth - 30;
     gElCanvas.height = gElCanvas.width * ratio;
@@ -58,6 +51,11 @@ function renderImgIntoCanvas(imgId) {
     }
 
     gCtx.drawImage(image, 0, 0, gElCanvas.width, gElCanvas.height);
+}
+
+function onFileInputChange(ev) {
+    handleImageFromInput(ev, renderImgIntoCanvas, updateMemeInfo);
+    toggleSections();
 }
 
 function toShowGallery() {
