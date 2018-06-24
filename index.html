@@ -56,7 +56,7 @@
             <div class="meme-editor flex align-items-center">
                 <section class="meme-canvas flex column align-items-center">
                     <canvas>
-                        Your browser does not support html5 canvas
+                        Your browser does not support HTML5 Canvas
                     </canvas>
                 </section>
                 <!-- Text Editor -->
@@ -65,18 +65,10 @@
                         <button class="btn-edit back-gallery" onclick="toggleSections()">Back to gallery</button>
                     </div> -->
                     <ul class="control-box clean-list flex">
-                        <li>
-                            <button class="btn-edit add-line" onclick="addLine()">+</button>
-                        </li>
                         <li class="input-wrapper">
                             <span>
                                 <input class="user-txt-box" type="text" placeholder="Insert text..." onkeyup="readUserLine(this.value)" />
                             </span>
-                        </li>
-                    </ul>
-                    <ul class="control-box clean-list flex">
-                        <li>
-                            <input class="btn-edit user-txt-color jscolor" onchange="readUserTxtColor(this.value)">
                         </li>
                         <!-- enlarge text -->
                         <li>
@@ -85,11 +77,16 @@
                         <li>
                             <button class="btn-edit smaller-txt" onclick="readUserTxtSize('minus')">A</button>
                         </li>
+                    </ul>
+                    <ul class="control-box clean-list flex">
+                        <li>
+                            <input class="btn-edit user-txt-color jscolor" onchange="readUserTxtColor(this.value)">
+                        </li>
                         <li>
                             <button class="btn-edit txt-shadow" onclick="readUserTxtShadow()">A</button>
                         </li>
                         <li>
-                            <button class="btn-edit txt-outline" onclick="readUserTxtOutline()">Outline</button>
+                            <button class="btn-edit txt-outline" onclick="readUserTxtOutline()">A</button>
                         </li>
                         <li>
                             <select class="user-txt-font" onchange="readUserTxtFont(this.value)">
@@ -98,14 +95,7 @@
                                 <option value="Sans-Serif">Sans-Serif</option>
                             </select>
                         </li>
-                    </ul>
-                    <ul class="control-box clean-list flex">
-                        <li>
-                            <button class="btn-edit" onclick="readUserTxtHeightOnCanvas('up')">▲</button>
-                        </li>
-                        <li>
-                            <button class="btn-edit" onclick="readUserTxtHeightOnCanvas('down')">▼</button>
-                        </li>
+
                         <!-- Move text -->
                         <li class="dropdown" onclick="toggleDropdown()">
                             <span class="dropdown-wrapper">
@@ -131,32 +121,40 @@
                                 </li>
                             </ul>
                         </li>
-                        <li style="width: 100%;">
+                        <li>
+                            <button class="btn-edit" onclick="readUserTxtHeightOnCanvas('up')">▲</button>
                         </li>
                         <li>
-                            <button class="btn-edit btn-control-lines" onclick="updateLine()">skip line</button>
-                        </li>
-                        <li>
-                            <button class="btn-edit btn-control-lines delete-line" onclick="deleteLine()">🗑</button>
+                            <button class="btn-edit" onclick="readUserTxtHeightOnCanvas('down')">▼</button>
                         </li>
                     </ul>
                     <ul class="control-box share-list clean-list flex">
                         <li>
-                            <button class="btn-share download">
-                                <a onclick="downloadMeme()" id="download">Download Meme</a>
-                            </button>
+                            <button class="btn-edit btn-control-lines add-line" onclick="addLine()">+</button>
                         </li>
                         <li>
-                            <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
-                                <input name="img" id="imgData" type="hidden" />
-                                <button type="submit" class="btn-share">Publish</button>
-                            </form>
+                            <button class="btn-edit btn-control-lines next-line" onclick="updateLine()">Line &#10148;</button>
                         </li>
                         <li>
-                            <div class="share-container">
-                            </div>
+                            <button class="btn-edit btn-control-lines delete-line" onclick="deleteLine()">🗑</button>
                         </li>
-                    </ul>
+                                <li>
+                                    <button class="btn-share btn-download">
+                                        <a onclick="downloadMeme()" id="download">Download</a>
+                                    </button>
+                                </li>
+                                <li>
+                                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                                        <input name="img" id="imgData" type="hidden" />
+                                        <button type="submit" class="btn-share btn-publish">Publish</button>
+                                    </form>
+                                </li>
+                                <li>
+                                    <button class="share-container">
+                                    </button>
+                                </li>
+                            </ul>
+
                 </section>
             </div>
 
