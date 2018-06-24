@@ -84,7 +84,10 @@ function readUserTxtShadow() {
 }
 
 function readUserTxtAlign(direction) {
+    console.log('gfg');
+    
     updateTxtAlign(direction, gLineIdx);
+    upadteAlignButton(direction);
     renderMeme();
 }
 
@@ -97,6 +100,19 @@ function alignTxtOnCanvas(direction) {
             return canvasTxtX = 20;
         case 'right':
             return canvasTxtX = gElCanvas.width - 20;
+    }
+}
+
+function upadteAlignButton(direction) {
+    var elAlign = document.querySelector('.dropdown-wrapper')
+    var elAlignBtns = document.querySelectorAll('.dropdown-list .btn-align');
+    console.log('fddf', elAlignBtns);
+    for (var i = 0; i < elAlignBtns.length; i++) {
+        console.log('fddf', i);
+        
+        if (elAlignBtns[i].value === direction) {
+            elAlign.innerHTML = elAlignBtns[i].parentNode.innerHTML;
+        }
     }
 }
 

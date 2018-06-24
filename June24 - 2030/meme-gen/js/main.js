@@ -144,7 +144,7 @@ function searchImgs(searchVal) {
     if (imgs === 'not found') {
         var elGallery = document.querySelector('.gallery');
         elGallery.innerHTML = `<img class="no-result" src="img/no-result.png" />`;
-    } else {        
+    } else {
         renderImgGallery(getImgsForDisplay(imgs));
     }
 }
@@ -162,4 +162,10 @@ function smoothScroll(sectionId, ev) {
     ev.preventDefault();
     var elSection = document.getElementById(sectionId);
     elSection.scrollIntoView({behavior: 'smooth'});
+}
+
+function toggleDropdown() {
+    // TODO: Make the function generic
+    var elDropdown = document.querySelector('.dropdown-list');
+    elDropdown.classList.toggle('open-dropdown');
 }
