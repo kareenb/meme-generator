@@ -57,6 +57,7 @@ function renderImgIntoCanvas() {
 function onFileInputChange(ev) {
     gMemeReset();
     handleImageFromInput(ev, renderImgIntoCanvas, updateMemeInfo);
+    addLine();
     toggleSections();
 }
 
