@@ -187,7 +187,7 @@ main {
 
 .gallery-wrapper {
     width: 100%;
-    min-height: 100%;
+    height: 100%;
     transform: translate(200%, 0);
     transition: transform 0.5s ease-in-out;
 }
@@ -247,7 +247,7 @@ ul.gallery {
     left: 0;
     right: 0;
     width: 100%;
-    min-height: calc(100vh - 3.75em);
+    height: calc(100vh - 3.75em);
     margin: 0 auto;
     background: #1e1e1e;
     transform: translate(-200%, 0);
