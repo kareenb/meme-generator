@@ -191,125 +191,21 @@ ul.gallery {
     padding-top: 10px;
 }
 
-/* .gallery li {
-    float: left;
-} */
-
-.gallery .hexagon {
-    float: left;
-    margin: 51.96px 10px 10px 3px;
-}
-
-.hexagon.img-1, .hexagon.img-11, .hexagon.img-21 {
-    margin-left: 100px;
-}
-
-@media (max-width: 1095px) {
-    ul.gallery {
-        padding: 10px 10px;
-    }
-    .hexagon.img-11, .hexagon.img-21 {
-        margin-left: 3px;
-    }
-    .hexagon.img-10, .hexagon.img-19 {
-        margin-left: 100px;
-    }
-    .hexagon.img-23 {
-        margin-left: 197px;
-    }
-}
-
-@media (max-width: 1018px) {
-    .hexagon.img-10, .hexagon.img-19, .hexagon.img-23 {
-        margin-left: 3px;
-    }
-    .hexagon.img-9, .hexagon.img-17 {
-        margin-left: 100px;
-    }
-    .hexagon.img-25 {
-        margin-left: 293px;
-    }
-}
-
-@media (max-width: 922px) {
-    .hexagon.img-9, .hexagon.img-17 {
-        margin-left: 3px;
-    }
-    .hexagon.img-8, .hexagon.img-15, .hexagon.img-22 {
-        margin-left: 100px;
-    }
-    .hexagon.img-25 {
-        margin-left: 197px;
-    }
-}
-
-@media (max-width: 824px) {
-    .hexagon.img-8, .hexagon.img-15, .hexagon.img-22 {
-        margin-left: 3px;
-    }
-    .hexagon.img-7, .hexagon.img-13, .hexagon.img-19 {
-        margin-left: 100px;
-    }
-    .hexagon.img-25 {
-        margin-left: 99px;
-    }
-}
-
-@media (max-width: 728px) {
-    .hexagon.img-7, .hexagon.img-13, .hexagon.img-18, .hexagon.img-19, .hexagon.img-25 {
-        margin-left: 3px;
-    }
-    .hexagon.img-6, .hexagon.img-11, .hexagon.img-16, .hexagon.img-21 {
-        margin-left: 100px;
-    }
-}
-
-@media (max-width: 632px) {
-    .hexagon.img-6, .hexagon.img-11, .hexagon.img-16 {
-        margin-left: 3px;
-    }
-    .hexagon.img-5, .hexagon.img-9, .hexagon.img-13, .hexagon.img-17, .hexagon.img-25 {
-        margin-left: 100px;
-    }
-}
-
-@media (max-width: 536px) {
-    .hexagon.img-5, .hexagon.img-9, .hexagon.img-17, .hexagon.img-21 {
-        margin-left: 3px;
-    }
-    .hexagon.img-4, .hexagon.img-7, .hexagon.img-10, .hexagon.img-16, .hexagon.img-19, .hexagon.img-22 {
-        margin-left: 100px;
-    }
-}
-
-@media (max-width: 439px) {
-    .hexagon.img-4, .hexagon.img-10, .hexagon.img-16, .hexagon.img-22, .hexagon.img-24  {
-        margin-left: 3px;
-    }
-    .hexagon.img-3, .hexagon.img-5, .hexagon.img-9, .hexagon.img-11, .hexagon.img-13, .hexagon.img-15, .hexagon.img-17, .hexagon.img-21, .hexagon.img-23 {
-        margin-left: 100px;
-    }
-}
-
 .gallery-wrapper.gallery-wrapper-open {
     transform: translate(0, 0);
 }
 
-/* .gallery img {
-    width: 100%;
-    max-width: 250px;
-    height: auto;
-    cursor: pointer;
-    transition: opacity 0.5s ease-in-out;
-} */
-
-.gallery:hover .img {
-    cursor: pointer;
-    opacity: 0.45;
+.gallery img {
+    transition: all 0.4s ease-in-out;
 }
 
-.gallery:hover .img:hover {
-    opacity: 1;
+.gallery:hover img {
+    cursor: pointer;
+}
+
+.gallery:hover img:hover {
+    transform: scale(1.25);
+    opacity: 0.75;
 }
 
 .keywords-display {
@@ -333,66 +229,6 @@ ul.gallery {
     .no-result {
         max-width: 550px; 
     }
-}
-
-/* Hexagons */
-
-.hexagon {
-    position: relative;
-    width: 180px; 
-    height: 103.92px;
-    margin: 51.96px 0;
-    /* background-image: url('../img/meme-imgs/4.jpg'); */
-    background-size: auto 207.8461px;
-    background-position: center;
-}
-  
-.hex-top, .hex-bottom {
-    position: absolute;
-    z-index: 1;
-    width: 127.28px;
-    height: 127.28px;
-    overflow: hidden;
-    transform: scaleY(0.5774) rotate(-45deg);
-    background: inherit;
-    left: 26.36px;
-}
-
-.hex-top:after, .hex-bottom:after {
-    content: "";
-    position: absolute;
-    width: 180.0000px;
-    height: 103.92304845413264px;
-    transform: rotate(45deg) scaleY(1.7321) translateY(-51.9615px);
-    transform-origin: 0 0;
-    background: inherit;
-}
-  
-.hex-top {
-    top: -63.6396px;
-}
-  
-.hex-top:after {
-    background-position: center top;
-}
-  
-.hex-bottom {
-    bottom: -63.6396px;
-}
-  
-.hex-bottom:after {
-    background-position: center bottom;
-}
-  
-.hexagon:after {
-    content: "";
-    position: absolute;
-    top: 0.0000px;
-    left: 0;
-    width: 180.0000px;
-    height: 103.9230px;
-    z-index: 2;
-    background: inherit;
 }
 
 /* Meme Editor */
@@ -424,24 +260,10 @@ ul.gallery {
 
 .meme-canvas {
     flex-grow: 1;
+    width: 100%;
     max-height: 55%;
-    max-width: none;
     padding: 10px;
     text-align: center;
-}
-
-@media (min-width: 780px) {
-    .meme-editor {
-        flex-direction: row;
-    }
-    .meme-canvas {
-        max-width: 50%;
-        max-height: none;
-    }
-}
-
-canvas {
-    /* width: 100%; */
 }
 
 /* Text Editor */
