@@ -22,9 +22,9 @@ function renderTxtOnCanvas(lineIdx) {
     // }
 
     if (currLine.shadow === 'on') {
-        gCtx.shadowOffsetX = -1.5;
-        gCtx.shadowOffsetY = 1.2;
-        gCtx.shadowColor = 'gray';
+        gCtx.shadowOffsetX = -2;
+        gCtx.shadowOffsetY = -2;
+        gCtx.shadowColor = '#000000';
     } else {
         gCtx.shadowOffsetX = 0;
         gCtx.shadowOffsetY = 0;
@@ -33,6 +33,7 @@ function renderTxtOnCanvas(lineIdx) {
 
     gCtx.font = `${currLine.size}px "${currLine.font}"`;
     gCtx.fillStyle = currLine.color;
+    if (currLine.color === gCtx.shadowColor) gCtx.shadowColor = 'gray';
     gCtx.textAlign = `${currLine.align}`;
 
     var canvasTxtX = alignTxtOnCanvas(currLine.align);

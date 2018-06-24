@@ -8,7 +8,7 @@
     <link href="lib/hamburgers/hamburgers.min.css" rel="stylesheet">
     <link href="css/hexagons.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet" />
-    <title>Meme Generator</title>
+    <title>Memer | Meme Generator</title>
 </head>
 
 <body class="flex column" onload="initPage()" onresize="renderMeme()">
@@ -17,7 +17,7 @@
     <!-- Navigation bar -->
     <header>
         <nav class="container flex space-between align-items-center">
-            <div class="logo flex">Memer</div>
+            <div class="logo flex" onclick="location.reload()">Memer</div>
             <div class="btn-toggle-menu hamburger hamburger--collapse" type="button" onclick="toggleMenu()">
                 <span class="hamburger-box">
                     <span class="hamburger-inner"></span>
@@ -42,16 +42,10 @@
         <section class="container gallery-wrapper gallery-wrapper-open">
             <div class="keywords-display flex space-evenly align-items-center"></div>
             <section class="search-keywords">
-                <input type="search" class="search-imgs" list="keywords" />
-                <datalist id="keywords">
-                    <option value="happy">
-                        <option value="trump">
-                            <option value="animal">
-                                <option value="movie">
-                                    <option value="matrix">
-                </datalist>
-                <button type="button" onclick="searchImgs(document.querySelector('.search-keywords input').value)">search</button>
+                <input type="search" class="search-imgs" list="keywords" onkeyup="searchImgs(this.value)" />
+                <datalist id="keywords"></datalist>
                 <button type="button" onclick="renderImgGallery()">show all</button>
+                <div class="no-result"></div>
             </section>
             <input id="myFileInput" type="file" accept="image/*;capture=camera">
             <input type="file" name="image" accept="image/*" capture="user">
@@ -236,7 +230,6 @@
             <h3>Fill the form and send us a message:</h3>
             <form class="contact-form flex column">
                 <input class="user-name" type="text" placeholder="Name" />
-                <!-- <input class="user-email" type="email" placeholder="Email" /> -->
                 <input class="msg-subj" type="text" placeholder="Subject" />
                 <textarea type="text" placeholder="Write your message here..."></textarea>
                 <button onclick="sendUserMsg()">Send</button>

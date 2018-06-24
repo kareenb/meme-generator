@@ -41,9 +41,10 @@ function getImgsByKeyword(searchVal) {
         } else if (keywordFound) {
             resImgs.push(gKeywords[i].imgs);
             resImgs = flatten(resImgs);
-        } else return 'not found';
+        }
     }
-    return resImgs;
+    if (resImgs.length === 0) return 'not found';
+    else return resImgs = deleteDoubles(resImgs);
 }
 
 function sortKeywordsBySearchs() {
@@ -61,6 +62,11 @@ function saveKeywords(keywords) {
 }
 
 function createKeyWords(keywords) {
+    keywords.push({
+        keyword: '',
+        imgs: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+        searchCount: 26
+    });
     keywords.push({
         keyword: 'happy',
         imgs: [2, 9, 13, 17, 22],
@@ -85,5 +91,10 @@ function createKeyWords(keywords) {
         keyword: 'trump',
         imgs: [3, 14],
         searchCount: 300
+    });
+    keywords.push({
+        keyword: 'baby',
+        imgs: [5, 7, 9, 15],
+        searchCount: 60
     });
 }

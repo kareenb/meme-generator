@@ -28,3 +28,23 @@ function flatten(values) {
     
     return flatVals;
 }
+
+function sortArr(arr) {
+    arr.sort(function (a, b) {
+        return a - b;
+    });
+}
+
+function deleteDoubles(arr) {
+    sortArr(arr);
+    var singlesArr = [];
+    for (var i = 0; i < arr.length; i++) {
+        var currVal = arr[i];
+        if (i > 0) {
+            var prevVal = arr[i - 1];
+            if (currVal === prevVal) continue;
+        }
+        singlesArr.push(currVal);
+    }
+    return singlesArr;
+}
