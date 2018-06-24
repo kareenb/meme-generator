@@ -4,7 +4,7 @@ console.log('meme generator');
 
 var gId = 0;
 var gImgs = [];
-var gMeme = { txts: [ { line: '', size: 40, font: 'Impact', color: '#ffffff', align: 'center', shadow: 'on' } ], image: null };
+var gMeme = { txts: [ { line: '', size: 40, font: 'Impact', color: '#ffffff', align: 'center', outline: 'on' } ], image: null };
 
 function createImgs() {
     var imgInfo = {};
@@ -49,12 +49,23 @@ function updateMemeInfo(imgId, img) {
     }
 }
 
+function deleteEmptyLines() {
+    return gMeme.txts.reduce(function (numOfDeleted, txt, idx) {
+        var txtLine = txt.line
+        if (txtLine.length === 0) {
+            deleteTxtLine(idx);
+            numOfDeleted += 1;
+        }
+        return numOfDeleted;            
+    }, 0);
+}
+
 function addTxtLine() {
-    gMeme.txts.push({ line: '', size: 40, font: 'Impact', color: '#ffffff', align: 'center', shadow: 'on' });
+    gMeme.txts.push({ line: '', size: 40, font: 'Impact', color: '#ffffff', align: 'center', outline: 'on' });
 }
 
 function deleteTxtLine(idx) {
-    gMeme.txts.splice(idx, 1);
+    return gMeme.txts.splice(idx, 1);
 }
 
 function updateTxt(txt, lineIdx) {
@@ -89,6 +100,14 @@ function updateTxtShadow(lineIdx) {
         gMeme.txts[lineIdx].shadow = 'on';
     } else if (gMeme.txts[lineIdx].shadow === 'on') {
         gMeme.txts[lineIdx].shadow = 'off';
+    }
+}
+
+function updateTxtOutline(lineIdx) {
+    if ((!gMeme.txts[lineIdx].outline) || gMeme.txts[lineIdx].outline === 'off') {
+        gMeme.txts[lineIdx].outline = 'on';
+    } else if (gMeme.txts[lineIdx].outline === 'on') {
+        gMeme.txts[lineIdx].outline = 'off';
     }
 }
 

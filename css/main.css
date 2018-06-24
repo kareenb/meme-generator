@@ -359,7 +359,7 @@ ul.gallery {
     color: transparent !important;
 }
 
-.shadow-active {
+.btn-active {
     box-shadow: inset 3px 3px 4px 0px #575353;
 }
 
