@@ -4,7 +4,7 @@ console.log('meme generator');
 
 var gId = 0;
 var gImgs = [];
-var gMeme = { txts: [ { line: '', size: 40, font: 'Impact', color: '#ffffff', align: 'center', outline: 'on' } ], image: null };
+var gMeme = { txts: [ { line: 'Add your text', size: 40, font: 'Impact', color: '#ffffff', align: 'center', outline: 'on' } ], image: null };
 
 function createImgs() {
     var imgInfo = {};
@@ -49,19 +49,8 @@ function updateMemeInfo(imgId, img) {
     }
 }
 
-function deleteEmptyLines() {
-    return gMeme.txts.reduce(function (numOfDeleted, txt, idx) {
-        var txtLine = txt.line
-        if (txtLine.length === 0) {
-            deleteTxtLine(idx);
-            numOfDeleted += 1;
-        }
-        return numOfDeleted;            
-    }, 0);
-}
-
 function addTxtLine() {
-    gMeme.txts.push({ line: '', size: 40, font: 'Impact', color: '#ffffff', align: 'center', outline: 'on' });
+    gMeme.txts.push({ line: 'Add your text', size: 40, font: 'Impact', color: '#ffffff', align: 'center', outline: 'on' });
 }
 
 function deleteTxtLine(idx) {

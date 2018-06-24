@@ -68,12 +68,16 @@ function addLine() {
     addTxtLine();
     gLineIdx = meme.txts.length - 1;
     adjustControls();
+    renderMeme();
 }
 
 function deleteLine() {
+    var elAddLineBtn = document.querySelector('.add-line');
+    if (elAddLineBtn.classList.contains('line-added')) elAddLineBtn.classList.remove('line-added');
+
     deleteTxtLine(gLineIdx);
+     gLineIdx -= 1;
     renderMeme();
-    gLineIdx = 0;
     adjustControls();
 }
 
@@ -158,8 +162,6 @@ function readUserTxtHeightOnCanvas(direction) {
 }
 
 function updateLine() {
-    var deletedLines = deleteEmptyLines();
-    gLineIdx -= deletedLines;
     var meme = getCurrMeme();
     var txts = meme.txts;
     if (gLineIdx === txts.length - 1) gLineIdx = 0;

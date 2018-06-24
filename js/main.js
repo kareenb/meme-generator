@@ -32,7 +32,7 @@ function renderImgGallery(imgs) {
 
 function readUserSelectedImg(imgId) {
     updateMemeInfo(imgId);
-    renderImgIntoCanvas();
+    renderMeme();
     adjustControls();
 }
 

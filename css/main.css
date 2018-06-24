@@ -630,3 +630,8 @@ ul.share-list .social-share-btn {
 .hamburger-inner::after {
     background-color: tomato;
 }
+
+.font-charge {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    visibility: hidden;
+}
