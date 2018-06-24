@@ -42,13 +42,13 @@
         <!-- Display & Search Memes -->
         <section class="container gallery-wrapper gallery-wrapper-open">
             <div class="keywords-display flex space-evenly align-items-center"></div>
-            <section class="search-keywords upload-image flex space-between">
-                <input type="file" name="image" onchange="onFileInputChange(event)" />
+            <section class="search-keywords upload-image flex column align-items-center">
                 <span class="flex">
                     <input type="search" class="search-imgs" list="keywords" onkeyup="searchImgs(this.value)" />
                     <datalist id="keywords"></datalist>
                     <button type="button" class="btn-show" onclick="renderImgGallery()">Show all</button>
                 </span>
+                <input type="file" name="image" onchange="onFileInputChange(event)" />
             </section>
             <div class="no-result"></div>
 
