@@ -46,6 +46,9 @@ function renderTxtOnCanvas(lineIdx) {
     var txtHeightRatio = (4 / 1000) * gElCanvas.height;
     var canvasTxtY = currLine.height * txtHeightRatio;
     var canvasTxtX = alignTxtOnCanvas(currLine.align);
+    gCtx.strokeStyle = (currLine.color === '#000000')? '#ffffff' : '#000000';
+    gCtx.lineWidth = 3;
+    gCtx.strokeText(currLine.line, canvasTxtX, canvasTxtY);
     gCtx.fillText(currLine.line, canvasTxtX, canvasTxtY);
 }
 
@@ -95,8 +98,6 @@ function readUserTxtShadow() {
 }
 
 function readUserTxtAlign(direction) {
-    console.log('gfg');
-
     updateTxtAlign(direction, gLineIdx);
     upadteAlignButton(direction);
     renderMeme();
@@ -138,19 +139,11 @@ function readUserTxtHeightOnCanvas(direction) {
     }
 }
 
-function updateLine(lineOrder) {
+function updateLine() {
     var meme = getCurrMeme();
     var txts = meme.txts;
-    switch (lineOrder) {
-        case 'next':
-            if (gLineIdx === txts.length - 1) gLineIdx = 0;
-            else gLineIdx += 1;
-            break;
-        case 'prev':
-            if (gLineIdx === 0) gLineIdx = txts.length - 1;
-            else gLineIdx -= 1;
-            break;
-    }
+    if (gLineIdx === txts.length - 1) gLineIdx = 0;
+    else gLineIdx += 1;
     adjustControls();
 }
 
@@ -175,13 +168,7 @@ function adjustControls() {
         }
     }
 
-    var alignOpts = document.querySelectorAll('.user-txt-align option');
-    for (var i = 0; i < alignOpts.length; i++) {
-        if (alignOpts[i].value === currLine.align) {
-            document.querySelector('.user-txt-align').options.selectedIndex = i;
-            break;
-        }
-    }
+    upadteAlignButton(currLine.align)
 
     var elTxtShadowBtn = document.querySelector('.txt-shadow');
     if (currLine.shadow === 'on') elTxtShadowBtn.classList.add('shadow-active');

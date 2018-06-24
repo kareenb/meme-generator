@@ -93,7 +93,6 @@ function toggleMenu() {
 
 function renderKeywordsDisplay() {
     var keywords = loadKeywords();
-    console.log(keywords)
     var strHTML = '';
     var numOfDisplayKeywords = (keywords.length < 7) ? keywords.length : 7;
     var displayKeywords = [];

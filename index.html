@@ -89,6 +89,9 @@
                             <button class="btn-edit txt-shadow" onclick="readUserTxtShadow()">A</button>
                         </li>
                         <li>
+                            <button class="btn-edit txt-outline" onclick="readUserTxtOutline()">Outline</button>
+                        </li>
+                        <li>
                             <select class="user-txt-font" onchange="readUserTxtFont(this.value)">
                                 <option value="Impact">Impact</option>
                                 <option value="Arial">Arial</option>
@@ -110,7 +113,7 @@
                                     <i class="fas fa-align-center"></i>
                                 </button>
                             </span>
-                            <ul class="dropdown-list flex clean-list ">
+                            <ul class="dropdown-list flex clean-list txt-align">
                                 <li>
                                     <button class="btn-edit btn-align" value="center" onclick="readUserTxtAlign(this.value)">
                                         <i class="dropdown-link fas fa-align-center"></i>
@@ -131,13 +134,10 @@
                         <li style="width: 100%;">
                         </li>
                         <li>
-                            <button class="btn-edit btn-control-lines" onclick="updateLine('prev')">◄</button>
+                            <button class="btn-edit btn-control-lines" onclick="updateLine()">skip line</button>
                         </li>
                         <li>
-                            <button class="btn-edit btn-control-lines" onclick="updateLine('next')">►</button>
-                        </li>
-                        <li>
-                            <button class="btn-edit btn-control-lines" onclick="deleteLine()">␡</button>
+                            <button class="btn-edit btn-control-lines delete-line" onclick="deleteLine()">🗑</button>
                         </li>
                     </ul>
                     <ul class="control-box share-list clean-list flex">
