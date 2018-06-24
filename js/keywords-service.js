@@ -1,4 +1,5 @@
 'use strict';
+
 var gKeywords;
 
 var KEYWORDS_KEY = 'keywords';
@@ -66,11 +67,6 @@ function saveKeywords(keywords) {
 }
 
 function createKeyWords(keywords) {
-    keywords.push({
-        keyword: '',
-        imgs: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
-        searchCount: 0
-    });
     keywords.push({
         keyword: 'happy',
         imgs: [2, 9, 13, 17, 22],

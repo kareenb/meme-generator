@@ -42,13 +42,16 @@
         <!-- Display & Search Memes -->
         <section class="container gallery-wrapper gallery-wrapper-open">
             <div class="keywords-display flex space-evenly align-items-center"></div>
-            <section class="search-keywords">
-                <input type="search" class="search-imgs" list="keywords" onkeyup="searchImgs(this.value)" />
-                <datalist id="keywords"></datalist>
-                <button type="button" onclick="renderImgGallery()">show all</button>
-                <div class="no-result"></div>
+            <section class="search-keywords upload-image flex column align-items-center">
+                <span class="flex">
+                    <input type="search" class="search-imgs" list="keywords" onkeyup="searchImgs(this.value)" />
+                    <datalist id="keywords"></datalist>
+                    <button type="button" class="btn-show" onclick="renderImgGallery()">Show all</button>
+                </span>
+                <input type="file" name="image" onchange="onFileInputChange(event)" />
             </section>
-            <input type="file" name="image" onchange="onFileInputChange(event)" />
+            <div class="no-result"></div>
+
             <ul class="gallery clean-list" id="hexGrid"></ul>
         </section>
         <p class="font-charge">.</p>
@@ -96,7 +99,6 @@
                                 <option value="Sans-Serif">Sans-Serif</option>
                             </select>
                         </li>
-
                         <!-- Move text -->
                         <li class="dropdown" onclick="toggleDropdown()">
                             <span class="dropdown-wrapper">
@@ -139,22 +141,22 @@
                         <li>
                             <button class="btn-edit btn-control-lines delete-line" onclick="deleteLine()">🗑</button>
                         </li>
-                                <li>
-                                    <button class="btn-share btn-download">
-                                        <a onclick="downloadMeme()" id="download">Download</a>
-                                    </button>
-                                </li>
-                                <li>
-                                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
-                                        <input name="img" id="imgData" type="hidden" />
-                                        <button type="submit" class="btn-share btn-publish">Publish</button>
-                                    </form>
-                                </li>
-                                <li>
-                                    <button class="share-container">
-                                    </button>
-                                </li>
-                            </ul>
+                        <li>
+                            <button class="btn-share btn-download">
+                                <a onclick="downloadMeme()" id="download">Download</a>
+                            </button>
+                        </li>
+                        <li>
+                            <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                                <input name="img" id="imgData" type="hidden" />
+                                <button type="submit" class="btn-share btn-publish">Publish</button>
+                            </form>
+                        </li>
+                        <li>
+                            <button class="share-container">
+                            </button>
+                        </li>
+                    </ul>
 
                 </section>
             </div>
@@ -169,7 +171,7 @@
                 <div class="member-img">
                     <img src="img/team/kareen.jpg" />
                 </div>
-                <div class="member-data">
+                <div class="member-data flex column space-between">
                     <h2 class="member-name">Kareen Ben Ari</h2>
                     <h4 class="member-title">Full Stack Developer</h4>
                     <p>
@@ -198,11 +200,11 @@
                 <div class="member-img">
                     <img src="img/team/shlomi.jpg" />
                 </div>
-                <div class="member-data">
+                <div class="member-data flex column space-between">
                     <h2 class="member-name">Shlomi Hafif</h2>
                     <h4 class="member-title">Full Stack Developer</h4>
                     <p>
-                        24 years old web programming student from Rishon Lezion. Writing a lot of stuff.
+                        24 years old web programming student from Rishon Lezion. A huge fan of Muki, Puki and the mighty Baba.
                     </p>
                     <ul class="social-links clean-list flex">
                         <li>

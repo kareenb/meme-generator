@@ -1,10 +1,12 @@
 'use strict';
 
-console.log('meme generator');
-
 var gId = 0;
 var gImgs = [];
-var gMeme = { txts: [ { line: 'Add your text', size: 40, font: 'Impact', color: '#ffffff', align: 'center', outline: 'on' } ], image: null };
+var gMeme = {};
+
+function gMemeReset() {
+    gMeme = { txts: [], image: null };
+}
 
 function createImgs() {
     var imgInfo = {};
@@ -12,7 +14,7 @@ function createImgs() {
         imgInfo = {
             id: ++gId,
             url: `img/meme-imgs/${gId}.jpg`,
-            keywords: []
+            keywords: ['']
         };
         gImgs.push(imgInfo);
     }
@@ -109,8 +111,7 @@ function getImgById(imgId) {
 function downloadMeme() {
     var link = document.getElementById('download');
     var canvas = document.querySelector('canvas');
-    console.log(canvas);
-    
+
     link.href = canvas.toDataURL();
     link.download = 'meme.png';
 }

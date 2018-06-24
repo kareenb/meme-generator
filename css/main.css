@@ -169,19 +169,29 @@ main {
 }
 
 .search-keywords button {
+    height: 30px;
     cursor: pointer;
-    font-family: 'MavenPro', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
-    border: none;
-    background-color: tomato;
-    height: 21px;
-    padding: 1px;
+    border: 1px solid tomato;
+    color: tomato;
+    font-size: 18px;
+    background: white;
     transition: all 0.3s ease-in-out;
+    font-family: 'MavenPro', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .search-keywords button:hover {
     color: white;
-    background-color: rgba(255, 99, 71, 0.575);
+    background-color: tomato;
+}
+
+.search-keywords .search-imgs {
+    width: 180px; 
+    font-size: 20px;  
+}
+
+input[type="file"] {
+    width: 80px;
+    margin: 5px;
 }
 
 /* Gallery (Meme templates) */
@@ -470,11 +480,14 @@ ul.share-list .social-share-btn {
     flex-direction: column;
 }
 
-.team-member {
-    width: 50%;
+.about .team-member {
+    width: 100%;
     margin-bottom: 10px;
+    padding: 3px;
 }
-
+.about .team-member {
+    word-break: break-all;
+}
 .about img {
     width: 150px;
     height: 150px;
@@ -492,6 +505,10 @@ ul.share-list .social-share-btn {
 .about h4 {
     margin: 0 0 10px;
     color: rgb(204, 35, 6);
+}
+
+.about .member-data {
+    height: 100%;
 }
 
 .about ul.social-links li {
@@ -513,6 +530,13 @@ ul.share-list .social-share-btn {
 @media (min-width: 780px) {
     .about {
         flex-direction: row;
+    }
+    .about .team-member {
+        width: 50%;
+        word-break: keep-all;
+    }
+    .about .member-data {
+        height: 100%;
     }
 }
 
