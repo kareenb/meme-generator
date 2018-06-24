@@ -39,8 +39,8 @@ function readUserSelectedImg(imgId) {
 
 function renderImgIntoCanvas() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
-    
     var image = getCurrMeme().image;
+    if (!image) return;
     var ratio = image.naturalHeight / image.naturalWidth;
     gElCanvas.width = document.querySelector('.meme-canvas').clientWidth - 30;
     gElCanvas.height = gElCanvas.width * ratio;

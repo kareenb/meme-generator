@@ -6,6 +6,7 @@ function renderMeme() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
     renderImgIntoCanvas();
     var meme = getCurrMeme();
+    if (!meme.image) return;
     meme.txts.forEach(function (txt, idx) {
         renderTxtOnCanvas(idx);
     });
