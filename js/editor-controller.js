@@ -6,7 +6,7 @@ function renderMeme() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
     renderImgIntoCanvas();
     var meme = getCurrMeme();
-    meme.txts.forEach(function(txt, idx) {
+    meme.txts.forEach(function (txt, idx) {
         renderTxtOnCanvas(idx);
     });
 }
@@ -14,12 +14,16 @@ function renderMeme() {
 function renderTxtOnCanvas(lineIdx) {
     var meme = getCurrMeme();
     var currLine = meme.txts[lineIdx];
-    // if (meme.txts.length > 1) {
-    //     var prevLine = meme.txts[gLineIdx - 1];
-    //     currLine.height = prevLine.height + 50;
-    // } else {
-        if (!currLine.height) currLine.height = 50;
-    // }
+    var elAddLineBtn = document.querySelector('.add-line');
+    if (elAddLineBtn.classList.contains('line-added')) {
+        if (meme.txts.length > 1) {
+            var prevLine = meme.txts[gLineIdx - 1];
+            var newLine = meme.txts[gLineIdx];
+            newLine.height = prevLine.height + 50;
+            elAddLineBtn.classList.remove('line-added');
+        }
+    }
+    if (!currLine.height) currLine.height = 50;
 
     if (currLine.shadow === 'on') {
         gCtx.shadowOffsetX = -2;
@@ -31,17 +35,23 @@ function renderTxtOnCanvas(lineIdx) {
         gCtx.shadowColor = 'transparent';
     }
 
-    gCtx.font = `${currLine.size}px "${currLine.font}"`;
+    var fontSizeRatio = (2 / 1000) * gElCanvas.width;
+    var fontSize = currLine.size * fontSizeRatio;
+    gCtx.font = `${fontSize}px "${currLine.font}"`;
+
     gCtx.fillStyle = currLine.color;
     if (currLine.color === gCtx.shadowColor) gCtx.shadowColor = 'gray';
     gCtx.textAlign = `${currLine.align}`;
 
+    var txtHeightRatio = (4 / 1000) * gElCanvas.height;
+    var canvasTxtY = currLine.height * txtHeightRatio;
     var canvasTxtX = alignTxtOnCanvas(currLine.align);
-    var canvasTxtY = currLine.height;
     gCtx.fillText(currLine.line, canvasTxtX, canvasTxtY);
 }
 
 function addLine() {
+    var elAddLineBtn = document.querySelector('.add-line');
+    elAddLineBtn.classList.add('line-added');
     addTxtLine();
     var meme = getCurrMeme();
     gLineIdx = meme.txts.length - 1;
@@ -86,7 +96,7 @@ function readUserTxtShadow() {
 
 function readUserTxtAlign(direction) {
     console.log('gfg');
-    
+
     updateTxtAlign(direction, gLineIdx);
     upadteAlignButton(direction);
     renderMeme();
@@ -107,10 +117,7 @@ function alignTxtOnCanvas(direction) {
 function upadteAlignButton(direction) {
     var elAlign = document.querySelector('.dropdown-wrapper')
     var elAlignBtns = document.querySelectorAll('.dropdown-list .btn-align');
-    console.log('fddf', elAlignBtns);
     for (var i = 0; i < elAlignBtns.length; i++) {
-        console.log('fddf', i);
-        
         if (elAlignBtns[i].value === direction) {
             elAlign.innerHTML = elAlignBtns[i].parentNode.innerHTML;
         }
@@ -121,11 +128,11 @@ function readUserTxtHeightOnCanvas(direction) {
     var meme = getCurrMeme();
     switch (direction) {
         case 'up':
-            meme.txts[gLineIdx].height -= 5;
+            meme.txts[gLineIdx].height -= 10;
             renderMeme();
             break;
         case 'down':
-            meme.txts[gLineIdx].height += 5;
+            meme.txts[gLineIdx].height += 10;
             renderMeme();
             break;
     }

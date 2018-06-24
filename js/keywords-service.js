@@ -34,10 +34,14 @@ function getImgsByKeyword(searchVal) {
         var keyword = gKeywords[i].keyword;
         var keywordFound = keyword.match(searchValRegex);
         if (searchVal === gKeywords[i].keyword) {
-            gKeywords[i].searchCount++;
-            sortKeywordsBySearchs();
-            saveKeywords(gKeywords);
-            return gKeywords[i].imgs;
+            if (searchVal === '') {
+                return gKeywords[i].imgs;
+            } else {
+                gKeywords[i].searchCount++;
+                sortKeywordsBySearchs();
+                saveKeywords(gKeywords);
+                return gKeywords[i].imgs;
+            }
         } else if (keywordFound) {
             resImgs.push(gKeywords[i].imgs);
             resImgs = flatten(resImgs);
@@ -65,7 +69,7 @@ function createKeyWords(keywords) {
     keywords.push({
         keyword: '',
         imgs: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
-        searchCount: 26
+        searchCount: 0
     });
     keywords.push({
         keyword: 'happy',
@@ -96,5 +100,10 @@ function createKeyWords(keywords) {
         keyword: 'baby',
         imgs: [5, 7, 9, 15],
         searchCount: 60
+    });
+    keywords.push({
+        keyword: 'sleep',
+        imgs: [6, 7],
+        searchCount: 38
     });
 }

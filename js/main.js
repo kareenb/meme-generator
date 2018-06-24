@@ -95,6 +95,7 @@ function toggleMenu() {
 
 function renderKeywordsDisplay() {
     var keywords = loadKeywords();
+    console.log(keywords)
     var strHTML = '';
     var numOfDisplayKeywords = (keywords.length < 7) ? keywords.length : 7;
     var displayKeywords = [];
@@ -119,7 +120,7 @@ function renderKeywordsDisplay() {
 
 function getFontSizeRatios(keywords, numOfDispKeywords) {
     var prevSearchCount = keywords[0].searchCount
-    var fontSizeRatio = 3;
+    var fontSizeRatio = 4;
     var fontSizeRatios = [];
     for (var i = 0; i < numOfDispKeywords; i++) {
         var currKeyword = keywords[i];
@@ -167,7 +168,7 @@ function sendUserMsg() {
 function smoothScroll(sectionId, ev) {
     ev.preventDefault();
     var elSection = document.getElementById(sectionId);
-    elSection.scrollIntoView({behavior: 'smooth'});
+    elSection.scrollIntoView({ behavior: 'smooth' });
 }
 
 function toggleDropdown() {
