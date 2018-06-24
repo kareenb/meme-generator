@@ -15,10 +15,11 @@ function renderImgGallery(imgs) {
     var elGallery = document.querySelector('.gallery');
     if (!imgs) imgs = getImgsForDisplay();
     imgs.forEach(function (img) {
-        strHTML += `<li>
-                        <div class="hexagon img img-${img.id}" style="background-image: url('${img.url}')" onclick="readUserSelectedImg(${img.id}); toggleSections()">
-                            <div class="hex-top"></div>
-                            <div class="hex-bottom"></div>
+        strHTML += `<li class="hex">
+                        <div class="hexIn">
+                            <div class="hexInner">
+                                <img class="img-${img.id}" src="${img.url}" onclick="readUserSelectedImg(${img.id}); toggleSections()" />
+                            </div>
                         </div>
                     </li>`;
     });
@@ -49,8 +50,6 @@ function renderImgIntoCanvas(imgId) {
 
     var divHeight = document.querySelector('.meme-canvas').clientHeight - 5;
     if (gElCanvas.height > divHeight) {
-        console.log('ex');
-        
         gElCanvas.height = divHeight;
         gElCanvas.width = (image.naturalWidth / image.naturalHeight) * gElCanvas.height;
     }
@@ -116,7 +115,7 @@ function renderKeywordsDisplay() {
 }
 
 function getFontSizeRatios(keywords, numOfDispKeywords) {
-    var prevSearchCount = keywords[0].searchCount 
+    var prevSearchCount = keywords[0].searchCount
     var fontSizeRatio = 3;
     var fontSizeRatios = [];
     for (var i = 0; i < numOfDispKeywords; i++) {
@@ -130,15 +129,15 @@ function getFontSizeRatios(keywords, numOfDispKeywords) {
     return fontSizeRatios;
 }
 
-function renderSearchResults(imgs) {
-    var strHTML = '';
-    var elResults = document.querySelector('.search-results');
-    imgs.forEach(function (img) {
-        strHTML += `<img class="img img-${img.id}" src="${img.url}" onclick="readUserSelectedImg(${img.id}); toggleSections()" />`;
-    });
+// function renderSearchResults(imgs) {
+//     var strHTML = '';
+//     var elResults = document.querySelector('.search-results');
+//     imgs.forEach(function (img) {
+//         strHTML += `<img class="img img-${img.id}" src="${img.url}" onclick="readUserSelectedImg(${img.id}); toggleSections()" />`;
+//     });
 
-    elResults.innerHTML = strHTML;
-}
+//     elResults.innerHTML = strHTML;
+// }
 
 function searchImgs(searchVal) {
     var imgs = getImgsForDisplay(getImgsByKeyword(searchVal));

@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="lib/fontawesome-5.1.0/css/all.css" rel="stylesheet">
-    <link href="lib/hamburgers/dist/hamburgers.css" rel="stylesheet">
+    <link href="lib/hamburgers/hamburgers.min.css" rel="stylesheet">
+    <link href="css/hexagons.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet" />
     <title>Meme Generator</title>
 </head>
@@ -45,51 +46,79 @@
                 <button type="button" onclick="searchImgs(document.querySelector('.search-keywords input').value)">search</button>
                 <button type="button" onclick="renderImgGallery()">show all</button>
             </section>
-            <ul class="gallery clean-list">
+            <input id="myFileInput" type="file" accept="image/*;capture=camera">
+            <input type="file" name="image" accept="image/*" capture="user">
+            <ul class="gallery clean-list" id="hexGrid">
             </ul>
         </section>
 
         <!-- Meme Editor -->
         <section class="container meme-editor-wrapper">
-            <div class="meme-editor flex space-around">
+            <div class="meme-editor flex align-items-center">
                 <section class="meme-canvas flex column align-items-center">
-                    <div class="back-to-gallery">
-                        <button class="btn-edit back" onclick="toggleSections()">Back to gallery</button>
-                    </div>
+                    
                     <canvas></canvas>
                 </section>
                 <!-- Text Editor -->
-                <section class="txt-editor flex column space-between">
+                <section class="txt-editor flex column">
+                    <div class="back-to-gallery">
+                        <button class="btn-edit back" onclick="toggleSections()">Back to gallery</button>
+                    </div>
                     <ul class="clean-list flex social-share">
-                        <li><a class="btn download" onclick="downloadMeme()" id="download">Download Meme</a></li>
-                        <li><a class="btn-edit share">Share</a></li>
+                        <li>
+                            <a class="btn download" onclick="downloadMeme()" id="download">Download Meme</a>
+                        </li>
+                        <li>
+                            <a class="btn-edit share">Share</a>
+                        </li>
                     </ul>
-                    
+
                     <div class="control-box">
-                        <div class="control-txt flex">
-                            <button class="btn-edit add-line" onclick="addLine()">+</button>
-                            <input class="user-txt-box" type="text" onkeyup="readUserLine(this.value)" />
+                        <ul class="control-box clean-list flex">
+                            <li>
+                                <button class="btn-edit add-line" onclick="addLine()">+</button>
+                            </li>
+                            <li>
+                                <input class="user-txt-box" type="text" onkeyup="readUserLine(this.value)" />
+                            </li>
                             <!-- enlarge text -->
-                            <button class="btn-edit bigger-txt" onclick="readUserTxtSize('plus')">A</button>
-                            <button class="btn-edit smaller-txt" onclick="readUserTxtSize('minus')">A</button>
-                            <button class="btn-edit txt-shadow" onclick="readUserTxtShadow()">A</button>
-                            <input class="btn-edit user-txt-color jscolor" onchange="readUserTxtColor(this.value)">
+                            <li>
+                                <button class="btn-edit bigger-txt" onclick="readUserTxtSize('plus')">A</button>
+                            </li>
+                            <li>
+                                <button class="btn-edit smaller-txt" onclick="readUserTxtSize('minus')">A</button>
+                            </li>
+                            <li>
+                                <button class="btn-edit txt-shadow" onclick="readUserTxtShadow()">A</button>
+                            </li>
+                            <li>
+                                <input class="btn-edit user-txt-color jscolor" onchange="readUserTxtColor(this.value)">
+                            </li>
+                        </ul>
+                        <ul class="control-box clean-list flex">
+                        <li>
                             <select class="user-txt-font" onchange="readUserTxtFont(this.value)">
                                 <option value="Impact">Impact</option>
                                 <option value="Arial">Arial</option>
                                 <option value="Sans-Serif">Sans-Serif</option>
                             </select>
-                            <!-- move text -->
+                        </li>
+                        <!-- move text -->
+                        <li>
                             <select class="user-txt-align" onchange="readUserTxtAlign(this.value)">
-                                <option value="center">Align Center</option>
+                                <option value="center"></option>
                                 <option value="left">Align Left</option>
                                 <option value="right">Align Right</option>
                             </select>
-
+                        </li>
+                        <li>
                             <button class="btn-edit" onclick="readUserTxtHeightOnCanvas('up')">▲</button>
+                        </li>
+                        <li>
                             <button class="btn-edit" onclick="readUserTxtHeightOnCanvas('down')">▼</button>
-
-                        </div>
+                        </li>
+                        <li></li>
+                        </ul>
                         <div class="control-lines">
                             <button class="btn-edit" onclick="updateLine('prev')">◄</button>
                             <button class="btn-edit" onclick="updateLine('next')">►</button>
