@@ -8,9 +8,12 @@ function initPage() {
     renderImgGallery();
     initKeywords();
     renderKeywordsDisplay();
+    renderSearchList();
 }
 
 function renderImgGallery(imgs) {
+    var elNoRes = document.querySelector('div.no-result');
+    elNoRes.innerHTML = '';
     var strHTML = '';
     var elGallery = document.querySelector('.gallery');
     if (!imgs) imgs = getImgsForDisplay();
@@ -18,7 +21,7 @@ function renderImgGallery(imgs) {
         strHTML += `<li class="hex">
                         <div class="hexIn">
                             <div class="hexInner">
-                                <img class="img-${img.id}" src="${img.url}" onclick="readUserSelectedImg(${img.id}); toggleSections()" />
+                                <img class="gallery-img img-${img.id}" src="${img.url}" onclick="readUserSelectedImg(${img.id}); toggleSections()" />
                             </div>
                         </div>
                     </li>`;
@@ -129,22 +132,25 @@ function getFontSizeRatios(keywords, numOfDispKeywords) {
     return fontSizeRatios;
 }
 
-// function renderSearchResults(imgs) {
-//     var strHTML = '';
-//     var elResults = document.querySelector('.search-results');
-//     imgs.forEach(function (img) {
-//         strHTML += `<img class="img img-${img.id}" src="${img.url}" onclick="readUserSelectedImg(${img.id}); toggleSections()" />`;
-//     });
-
-//     elResults.innerHTML = strHTML;
-// }
+function renderSearchList() {
+    var keywords = loadKeywords();
+    var elDataList = document.querySelector('.search-keywords datalist');
+    var strHTML = '';
+    keywords.forEach(function (keyword) {
+        strHTML += `<option value = "${keyword.keyword}">`;
+    })
+    elDataList.innerHTML = strHTML;
+}
 
 function searchImgs(searchVal) {
+    var elNoRes = document.querySelector('div.no-result');
     var imgs = (getImgsByKeyword(searchVal));
     if (imgs === 'not found') {
+        elNoRes.innerHTML = `<img class="no-result" src="img/no-result.png" />`;
         var elGallery = document.querySelector('.gallery');
-        elGallery.innerHTML = `<img class="no-result" src="img/no-result.png" />`;
-    } else {        
+        elGallery.innerHTML = ''
+    } else {
+        elNoRes.innerHTML = '';
         renderImgGallery(getImgsForDisplay(imgs));
     }
 }
