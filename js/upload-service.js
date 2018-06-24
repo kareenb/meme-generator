@@ -2,7 +2,7 @@
 function uploadImg(elForm, ev) {
   ev.preventDefault();
 
-  document.getElementById('imgData').value = canvas.toDataURL('image/jpeg');
+  document.getElementById('imgData').value = gElCanvas.toDataURL('image/jpeg');
 
   // A function to be called if request succeeds
   function onSuccess(uploadedImgUrl) {

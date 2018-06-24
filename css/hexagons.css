@@ -76,19 +76,29 @@ https://github.com/web-tiki/responsive-grid-of-hexagons
   }
 }
 
-@media (max-width: 780px) { /* <- 7-6  hexagons per row */
-  #hexGrid{
-    padding-bottom: 10%
-  }
-  .hex {
-    width: 14.285714285714285714285714285714%; /* = 100 / 7 */
-  }
-  .hex:nth-child(13n+8) { /* first hexagon of even rows */
-    margin-left: 7.14%;  /* = width of .hex / 2  to indent even rows */
-  }
+@media (max-width: 780px) and (min-width: 580px) { /* <- 7-6  hexagons per row */
+    #hexGrid {
+        padding-bottom: 10%
+    }
+    .hex {
+        width: 14.285714285714285714285714285714%; /* = 100 / 7 */
+    }
+    .hex:nth-child(13n+8) { /* first hexagon of even rows */
+        margin-left: 7.14%;  /* = width of .hex / 2  to indent even rows */
+    }
 }
 
-
+@media (max-width: 580px) { /* <- 6-5  hexagons per row */
+    #hexGrid {
+        padding-bottom: 5%
+    }
+    .hex {
+        width: 16.66666666666666667%; /* = 100 / 6 */
+    }
+    .hex:nth-child(11n+7) { /* first hexagon of even rows */
+        margin-left: 8.33333%;  /* = width of .hex / 2  to indent even rows */
+    }
+}
 
 /* Hexagons */
 

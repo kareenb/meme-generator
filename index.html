@@ -147,14 +147,19 @@
                             </button>
                         </li>
                         <li>
-                            <button class="btn-share share">
-                                Share
-                            </button>
+                            <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                                <input name="img" id="imgData" type="hidden" />
+                                <button type="submit" class="btn-share">Publish</button>
+                            </form>
+                        </li>
+                        <li>
+                            <div class="share-container">
+                            </div>
                         </li>
                     </ul>
                 </section>
-
             </div>
+
         </section>
 
     </main>
