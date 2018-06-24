@@ -323,6 +323,16 @@ ul.gallery {
     border: 1px solid black;
 }
 
+.btn-edit.add-line {
+    font-size: 1.25em;
+    color: white;
+    background-color: rgb(252, 172, 23);
+}
+
+.btn-edit.add-line:hover {
+    background-color: #2eb398;
+}
+
 .txt-editor ul.control-box li.input-wrapper {
     width: 100%;
 }
@@ -335,24 +345,13 @@ ul.gallery {
 .control-box .user-txt-box{
     width: 100%;
     padding: 0 5px;
-    font-size: 17px;
-    line-height: 35px;
+    font-size: 18px;
 }
 
 .control-box .user-txt-color {
     width: 100%;
     text-align: center;
     color: transparent !important;
-}
-
-.btn-edit.add-line {
-    font-size: 1.25em;
-    color: white;
-    background-color: rgb(252, 172, 23);
-}
-
-.btn-edit.add-line:hover {
-    background-color: #2eb398;
 }
 
 .shadow-active {
