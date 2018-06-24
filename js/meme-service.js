@@ -1,7 +1,5 @@
 'use strict';
 
-console.log('meme generator');
-
 var gId = 0;
 var gImgs = [];
 var gMeme = {};
