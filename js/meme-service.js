@@ -4,28 +4,27 @@ console.log('meme generator');
 
 var gId = 0;
 var gImgs = [];
+var gMeme = { txts: [ { line: '', size: 40, font: 'Impact', color: '#ffffff', align: 'center', shadow: 'on' } ] };
 
 function createImgs() {
     var imgInfo = {};
     while (gId < 25) {
         imgInfo = {
             id: ++gId,
-            url: `../meme-gen/meme-imgs/${gId}.jpg`,
+            url: `img/meme-imgs/${gId}.jpg`,
             keywords: []
         };
         gImgs.push(imgInfo);
     }
 }
 
-var gMeme = { txts: [ { line: '', size: 30, font: 'Impact', color: 'black', align: 'center', shadow: 'off' } ] };
-
-function getImgsForDisplay(Ids) {
-    if (!Ids) return gImgs;
+function getImgsForDisplay(ids) {
+    if (!ids) return gImgs;
     else {
         var imgs = [];
-        for (var i = 0; i < Ids.length; i++){
+        for (var i = 0; i < ids.length; i++){
             for (var j = 0; j < gImgs.length; j++) {
-                if (gImgs[j].id === Ids[i]) {
+                if (gImgs[j].id === ids[i]) {
                     imgs.push(gImgs[j]);
                     continue;
                 }
@@ -44,7 +43,7 @@ function updateMemeInfo(imgId) {
 }
 
 function addTxtLine() {
-    gMeme.txts.push({ line: '', size: 30, font: 'Impact', color: '#000000', align: 'center', shadow: 'off' });
+    gMeme.txts.push({ line: '', size: 40, font: 'Impact', color: '#ffffff', align: 'center', shadow: 'on' });
 }
 
 function deleteTxtLine(idx) {
