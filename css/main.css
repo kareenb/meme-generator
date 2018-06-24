@@ -57,7 +57,7 @@ header {
     font-size: 2.5em;
     line-height: 1.5em;
     letter-spacing: -0.8px;
-    color: #2eb398;
+    color: tomato;
     text-transform: capitalize;
 }
 
@@ -95,14 +95,14 @@ header ul.main-menu a {
     padding: 20px 0;
     text-align: center;
     text-decoration: none;
-    color: #2eb398;
+    color: tomato;
     text-transform: capitalize;
     transition: all 0.3s ease-in-out;
 }
 
 header ul.main-menu a:hover {
     color: white;
-    background: #2eb398;
+    background: rgba(255, 99, 71, 0.575);
 }
 
 .menu-opacity {
@@ -161,7 +161,7 @@ header ul.main-menu a:hover {
 main {
     flex: 1 0 auto;
     min-height: calc(100vh - 3.75em);
-    background: #736e6e;
+    background: white;
 }
 
 .search-keywords {
@@ -171,16 +171,17 @@ main {
 .search-keywords button {
     cursor: pointer;
     font-family: 'MavenPro', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #2eb398;
+    color: white;
     border: none;
-    background-color: white;
+    background-color: tomato;
     height: 21px;
     padding: 1px;
+    transition: all 0.3s ease-in-out;
 }
 
 .search-keywords button:hover {
     color: white;
-    background-color: rgb(252, 172, 23);
+    background-color: rgba(255, 99, 71, 0.575);
 }
 
 /* Gallery (Meme templates) */
@@ -221,7 +222,7 @@ ul.gallery {
     padding: 10px;
     flex-wrap: wrap;
     color: white;
-    background-color: rgb(252, 172, 23);
+    background-color: tomato;
 }
 
 .keywords-display span:hover {
@@ -249,7 +250,7 @@ ul.gallery {
     width: 100%;
     height: calc(100vh - 3.75em);
     margin: 0 auto;
-    background: #1e1e1e;
+    background: white;
     transform: translate(-200%, 0);
     transition: transform 0.5s ease-in-out;
 }
@@ -317,13 +318,18 @@ ul.gallery {
     transition: all 0.3s ease-in-out;
 }
 
+.control-box select {
+    cursor: pointer;
+}
+
+
 .control-box .btn-edit:hover {
     color: white;
-    background-color: rgb(252, 172, 23);
+    background-color: tomato;
 }
 
 .control-box .btn-control-lines:hover {
-    background-color: #2eb398;
+    background-color: tomato;
 }
 
 .control-box select,
@@ -334,7 +340,12 @@ ul.gallery {
 
 .btn-edit.btn-control-lines {
     color: white;
-    background-color: rgb(252, 172, 23);
+    background-color: tomato;
+}
+
+.btn-edit.btn-control-lines:hover {
+    color: tomato;
+    background-color: transparent;
 }
 
 .btn-edit.next-line {
@@ -407,7 +418,7 @@ ul.share-list .share-container {
     height: 35px;
     cursor: pointer;
     font-family: 'MavenPro', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: black;
+    color: tomato;
     border: 1px solid black;
     background-color: white;
     transition: all 0.3s ease-in-out;
@@ -424,7 +435,7 @@ ul.share-list .btn-share a:visited {
     height: 100%;
     padding: 0 5px;
     line-height: 34px;
-    color: black;
+    color: tomato;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
 }
@@ -432,7 +443,7 @@ ul.share-list .btn-share a:visited {
 ul.share-list .btn-share:hover,
 ul.share-list .btn-share a:hover {
     color: white;
-    background: rgb(252, 172, 23);
+    background: tomato;
 }
 
 ul.share-list .social-share-btn {
@@ -452,7 +463,7 @@ ul.share-list .social-share-btn {
 
 .about-wrapper {
     width: 100%;
-    background: #2eb398;
+    background: tomato;
 }
 
 .about {
@@ -460,6 +471,7 @@ ul.share-list .social-share-btn {
 }
 
 .team-member {
+    width: 50%;
     margin-bottom: 10px;
 }
 
@@ -479,22 +491,22 @@ ul.share-list .social-share-btn {
 
 .about h4 {
     margin: 0 0 10px;
-    color: #20816d;
+    color: rgb(204, 35, 6);
 }
 
 .about ul.social-links li {
-    background: #a4dbd4;
+    background: rgb(236, 146, 130);
     transition: all 0.3s ease-in-out;
 }
 
 .about ul.social-links li:hover {
-    background: #6ccbbe;
+    background: rgb(216, 83, 59);
 }
 
 .about ul.social-links li a {
     display: block;
     padding: 10px;
-    color: #1db49f;
+    color: rgb(204, 35, 6);
     text-decoration: none;
 }
 
@@ -564,23 +576,12 @@ ul.share-list .social-share-btn {
     text-transform: uppercase;
     color: #d7fcf5;
     border: none;
-    background-color: #2eb398;
+    background-color: tomato;
     transition: all 0.3s ease-in-out;
 }
 
 .contact-form button:hover {
-    background-color: #5fc9b4;
-}
-
-/* Footer */
-
-footer {
-    width: 100%;
-    margin: 0 auto;
-    padding: 5px;
-    font-family: 'MavenPro', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border-top: 1px solid #2eb398;
-    background: #323232;
+    background-color: rgb(236, 146, 130);
 }
 
 /* Helpers */
@@ -627,5 +628,5 @@ footer {
 .hamburger-inner,
 .hamburger-inner::before,
 .hamburger-inner::after {
-    background-color: #2eb398;
+    background-color: tomato;
 }
