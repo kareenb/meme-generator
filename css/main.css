@@ -1,4 +1,9 @@
 /* Font-Face */
+@font-face {
+    font-family: 'Impact';
+    font-weight: 400;
+    src: url('../lib/fonts/Impact/impact.ttf');
+}
 
 @font-face {
     font-family: 'Lato';
@@ -402,8 +407,8 @@ ul.social-share li {
 }
 
 .about img {
-    width: 175px;
-    height: 175px;
+    width: 150px;
+    height: 150px;
     margin: 5px 10px;
     border-radius: 50%;
     border: 7px solid white;
