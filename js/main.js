@@ -18,19 +18,20 @@ function renderImgGallery(imgs) {
     var elGallery = document.querySelector('.gallery');
     if (!imgs) imgs = getImgsForDisplay();
     imgs.forEach(function (img) {
-        strHTML += `<li class="hex">
-                        <div class="hexIn">
-                            <div class="hexInner">
-                                <img class="gallery-img img-${img.id}" src="${img.url}" onclick="readUserSelectedImg(${img.id}); toggleSections()" />
-                            </div>
-                        </div>
-                    </li>`;
+        strHTML += 
+        `<li class="hex">
+            <div class="hexIn">
+                <div class="hexInner">
+                    <img class="gallery-img img-${img.id}" src="${img.url}" onclick="readUserSelectedImg(${img.id}); toggleSections()" />
+                </div>
+            </div>
+        </li>`;
     });
-
     elGallery.innerHTML = strHTML;
 }
 
 function readUserSelectedImg(imgId) {
+    gMemeReset();
     updateMemeInfo(imgId);
     renderImgIntoCanvas();
     adjustControls();
@@ -54,6 +55,7 @@ function renderImgIntoCanvas() {
 }
 
 function onFileInputChange(ev) {
+    gMemeReset();
     handleImageFromInput(ev, renderImgIntoCanvas, updateMemeInfo);
     toggleSections();
 }
