@@ -157,6 +157,25 @@ main {
     background: #736e6e;
 }
 
+.search-keywords {
+    margin: 5px 0;
+}
+
+.search-keywords button {
+    cursor: pointer;
+    font-family: 'MavenPro', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2eb398;
+    border: none;
+    background-color: white;
+    height: 21px;
+    padding: 1px;
+}
+
+.search-keywords button:hover {
+    color: white;
+    background-color: rgb(252, 172, 23);
+}
+
 /* Gallery (Meme templates) */
 
 .gallery-wrapper {
@@ -304,6 +323,16 @@ ul.gallery {
 
 .keywords-display span:hover {
     cursor: pointer;
+}
+
+.no-result {
+    width: 95%;
+}
+
+@media (min-width: 320px) {
+    .no-result {
+        max-width: 550px; 
+    }
 }
 
 /* Hexagons */
@@ -535,6 +564,7 @@ ul.social-share li {
 
 .about h2 {
     margin: 10px 0 0;
+    font-weight: normal;
     color: white;
 }
 

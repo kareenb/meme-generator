@@ -141,8 +141,13 @@ function renderSearchResults(imgs) {
 }
 
 function searchImgs(searchVal) {
-    var imgs = getImgsForDisplay(getImgsByKeyword(searchVal));
-    renderImgGallery(imgs);
+    var imgs = (getImgsByKeyword(searchVal));
+    if (imgs === 'not found') {
+        var elGallery = document.querySelector('.gallery');
+        elGallery.innerHTML = `<img class="no-result" src="img/no-result.png" />`;
+    } else {        
+        renderImgGallery(getImgsForDisplay(imgs));
+    }
 }
 
 function sendUserMsg() {
@@ -152,4 +157,10 @@ function sendUserMsg() {
     msgBody += `
                 From: ${userName}`;
     window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=kareenb89@gmail.com&su=${msgSubj}&body=${msgBody}`, '_blank');
+}
+
+function smoothScroll(sectionId, ev) {
+    ev.preventDefault();
+    var elSection = document.getElementById(sectionId);
+    elSection.scrollIntoView({behavior: 'smooth'});
 }

@@ -27,10 +27,10 @@
                     <a href="#" onclick="toShowGallery(); toggleMenu()">Gallery</a>
                 </li>
                 <li>
-                    <a href="#">About</a>
+                    <a href="#" onclick="smoothScroll('about-us', event)">About</a>
                 </li>
                 <li>
-                    <a href="#">Get In Touch</a>
+                    <a href="#" onclick="smoothScroll('contact', event)">Get In Touch</a>
                 </li>
             </ul>
         </nav>
@@ -41,7 +41,14 @@
         <section class="container gallery-wrapper gallery-wrapper-open">
             <div class="keywords-display flex space-evenly align-items-center"></div>
             <section class="search-keywords">
-                <input type="search" class="search-imgs" />
+                <input type="search" class="search-imgs" list="keywords" />
+                <datalist id="keywords">
+                    <option value="happy">
+                        <option value="trump">
+                            <option value="animal">
+                                <option value="movie">
+                                    <option value="matrix">
+                </datalist>
                 <button type="button" onclick="searchImgs(document.querySelector('.search-keywords input').value)">search</button>
                 <button type="button" onclick="renderImgGallery()">show all</button>
             </section>
@@ -61,10 +68,14 @@
                 <!-- Text Editor -->
                 <section class="txt-editor flex column space-between">
                     <ul class="clean-list flex social-share">
-                        <li><a class="btn download" onclick="downloadMeme()" id="download">Download Meme</a></li>
-                        <li><a class="btn-edit share">Share</a></li>
+                        <li>
+                            <a class="btn download" onclick="downloadMeme()" id="download">Download Meme</a>
+                        </li>
+                        <li>
+                            <a class="btn-edit share">Share</a>
+                        </li>
                     </ul>
-                    
+
                     <div class="control-box">
                         <div class="control-txt flex">
                             <button class="btn-edit add-line" onclick="addLine()">+</button>

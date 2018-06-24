@@ -27,15 +27,23 @@ function matchKeywords() {
     }
 }
 
-function getImgsByKeyword(keyword) {
+function getImgsByKeyword(searchVal) {
+    var searchValRegex = new RegExp(searchVal, 'gi');
+    var resImgs = [];
     for (var i = 0; i < gKeywords.length; i++) {
-        if (keyword === gKeywords[i].keyword) {
+        var keyword = gKeywords[i].keyword;
+        var keywordFound = keyword.match(searchValRegex);
+        if (searchVal === gKeywords[i].keyword) {
             gKeywords[i].searchCount++;
             sortKeywordsBySearchs();
             saveKeywords(gKeywords);
             return gKeywords[i].imgs;
-        }
+        } else if (keywordFound) {
+            resImgs.push(gKeywords[i].imgs);
+            resImgs = flatten(resImgs);
+        } else return 'not found';
     }
+    return resImgs;
 }
 
 function sortKeywordsBySearchs() {
