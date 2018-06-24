@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
     <link href="lib/fontawesome-5.1.0/css/all.css" rel="stylesheet">
     <link href="lib/hamburgers/hamburgers.min.css" rel="stylesheet">
     <link href="css/hexagons.css" rel="stylesheet">
@@ -47,116 +47,111 @@
                 <button type="button" onclick="renderImgGallery()">show all</button>
                 <div class="no-result"></div>
             </section>
-            <input id="myFileInput" type="file" accept="image/*;capture=camera">
-            <input type="file" name="image" accept="image/*" capture="user">
-            <ul class="gallery clean-list" id="hexGrid">
-            </ul>
+            <input type="file" name="image" onchange="onFileInputChange(event)" />
+            <ul class="gallery clean-list" id="hexGrid"></ul>
         </section>
 
         <!-- Meme Editor -->
         <section class="container meme-editor-wrapper">
             <div class="meme-editor flex align-items-center">
                 <section class="meme-canvas flex column align-items-center">
-                    <canvas></canvas>
+                    <canvas>
+                        Your browser does not support html5 canvas
+                    </canvas>
                 </section>
                 <!-- Text Editor -->
                 <section class="txt-editor flex column">
                     <!-- <div class="back-to-gallery">
                         <button class="btn-edit back-gallery" onclick="toggleSections()">Back to gallery</button>
                     </div> -->
-                    <!-- <ul class="clean-list flex social-share">
+                    <ul class="control-box clean-list flex">
                         <li>
-                            <a class="btn download" onclick="downloadMeme()" id="download">Download Meme</a>
+                            <button class="btn-edit add-line" onclick="addLine()">+</button>
+                        </li>
+                        <li class="input-wrapper">
+                            <span>
+                                <input class="user-txt-box" type="text" placeholder="Insert text..." onkeyup="readUserLine(this.value)" />
+                            </span>
+                        </li>
+                    </ul>
+                    <ul class="control-box clean-list flex">
+                        <li>
+                            <input class="btn-edit user-txt-color jscolor" onchange="readUserTxtColor(this.value)">
+                        </li>
+                        <!-- enlarge text -->
+                        <li>
+                            <button class="btn-edit bigger-txt" onclick="readUserTxtSize('plus')">A</button>
                         </li>
                         <li>
-                            <a class="btn-edit share">Share</a>
+                            <button class="btn-edit smaller-txt" onclick="readUserTxtSize('minus')">A</button>
                         </li>
-                    </ul> -->
-
-                    <div>
-                        <ul class="control-box clean-list flex">
-                            <li>
-                                <button class="btn-edit add-line" onclick="addLine()">+</button>
-                            </li>
-                            <li class="input-wrapper">
-                                <span>
-                                    <input class="user-txt-box" type="text" placeholder="Insert text..." onkeyup="readUserLine(this.value)" />
-                                </span>
-                            </li>
-
-                        </ul>
-                        <ul class="control-box clean-list flex">
-                            <li>
-                                <input class="btn-edit user-txt-color jscolor" onchange="readUserTxtColor(this.value)">
-                            </li>
-                            <!-- enlarge text -->
-                            <li>
-                                <button class="btn-edit bigger-txt" onclick="readUserTxtSize('plus')">A</button>
-                            </li>
-                            <li>
-                                <button class="btn-edit smaller-txt" onclick="readUserTxtSize('minus')">A</button>
-                            </li>
-                            <li>
-                                <button class="btn-edit txt-shadow" onclick="readUserTxtShadow()">A</button>
-                            </li>
-                            <li>
-                                <select class="user-txt-font" onchange="readUserTxtFont(this.value)">
-                                    <option value="Impact">Impact</option>
-                                    <option value="Arial">Arial</option>
-                                    <option value="Sans-Serif">Sans-Serif</option>
-                                </select>
-                            </li>
-                        </ul>
-                        <ul class="control-box clean-list flex">
-                            <li>
-                                <button class="btn-edit" onclick="readUserTxtHeightOnCanvas('up')">▲</button>
-                            </li>
-                            <li>
-                                <button class="btn-edit" onclick="readUserTxtHeightOnCanvas('down')">▼</button>
-                            </li>
-                            <!-- move text -->
-                            <li class="dropdown" onclick="toggleDropdown()">
-                                <span class="dropdown-wrapper">
-                                    <button class="btn-edit btn-align">
-                                        <i class="fas fa-align-center"></i>
+                        <li>
+                            <button class="btn-edit txt-shadow" onclick="readUserTxtShadow()">A</button>
+                        </li>
+                        <li>
+                            <select class="user-txt-font" onchange="readUserTxtFont(this.value)">
+                                <option value="Impact">Impact</option>
+                                <option value="Arial">Arial</option>
+                                <option value="Sans-Serif">Sans-Serif</option>
+                            </select>
+                        </li>
+                    </ul>
+                    <ul class="control-box clean-list flex">
+                        <li>
+                            <button class="btn-edit" onclick="readUserTxtHeightOnCanvas('up')">▲</button>
+                        </li>
+                        <li>
+                            <button class="btn-edit" onclick="readUserTxtHeightOnCanvas('down')">▼</button>
+                        </li>
+                        <!-- Move text -->
+                        <li class="dropdown" onclick="toggleDropdown()">
+                            <span class="dropdown-wrapper">
+                                <button class="btn-edit btn-align">
+                                    <i class="fas fa-align-center"></i>
+                                </button>
+                            </span>
+                            <ul class="dropdown-list flex clean-list ">
+                                <li>
+                                    <button class="btn-edit btn-align" value="center" onclick="readUserTxtAlign(this.value)">
+                                        <i class="dropdown-link fas fa-align-center"></i>
                                     </button>
-                                </span>
-                                <ul class="dropdown-list flex clean-list ">
-                                    <li>
-                                        <button class="btn-edit btn-align" value="center" onclick="readUserTxtAlign(this.value)">
-                                            <i class="dropdown-link fas fa-align-center"></i>
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button class="btn-edit btn-align" value="left" onclick="readUserTxtAlign(this.value)">
-                                            <i class="dropdown-link fas fa-align-left"></i>
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button class="btn-edit btn-align" value="right" onclick="readUserTxtAlign(this.value)">
-                                            <i class="dropdown-link fas fa-align-right"></i>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li style="width: 100%;">
-
-                            </li>
-                            <li>
-                                <button class="btn-edit btn-control-lines" onclick="updateLine('prev')">◄</button>
-                            </li>
-                            <li>
-                                <button class="btn-edit btn-control-lines" onclick="updateLine('next')">►</button>
-                            </li>
-                            <li>
-                                <button class="btn-edit btn-control-lines" onclick="deleteLine()">␡</button>
-                            </li>
-                        </ul>
-                        <div class="control-lines">
-
-                        </div>
-                    </div>
-
+                                </li>
+                                <li>
+                                    <button class="btn-edit btn-align" value="left" onclick="readUserTxtAlign(this.value)">
+                                        <i class="dropdown-link fas fa-align-left"></i>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="btn-edit btn-align" value="right" onclick="readUserTxtAlign(this.value)">
+                                        <i class="dropdown-link fas fa-align-right"></i>
+                                    </button>
+                                </li>
+                            </ul>
+                        </li>
+                        <li style="width: 100%;">
+                        </li>
+                        <li>
+                            <button class="btn-edit btn-control-lines" onclick="updateLine('prev')">◄</button>
+                        </li>
+                        <li>
+                            <button class="btn-edit btn-control-lines" onclick="updateLine('next')">►</button>
+                        </li>
+                        <li>
+                            <button class="btn-edit btn-control-lines" onclick="deleteLine()">␡</button>
+                        </li>
+                    </ul>
+                    <ul class="control-box share-list clean-list flex">
+                        <li>
+                            <button class="btn-share download">
+                                <a onclick="downloadMeme()" id="download">Download Meme</a>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="btn-share share">
+                                Share
+                            </button>
+                        </li>
+                    </ul>
                 </section>
 
             </div>
@@ -253,6 +248,7 @@
     <script src="js/meme-service.js"></script>
     <script src="js/keywords-service.js"></script>
     <script src="js/editor-controller.js"></script>
+    <script src="js/upload-service.js"></script>
     <script src="js/main.js"></script>
 </body>
 
